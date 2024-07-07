@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingBehavior : MonoBehaviour {
-    /// <summary>
-    /// Offset the center of the Slerp
-    /// </summary>
+    [Tooltip("Determents the amplitude of the curve")]
     [SerializeField] private Vector3 _centerOffset;
 
-    /// <summary>
-    /// Number of points in the path calculation
-    /// </summary>
-    [SerializeField] private int _count;
+    [Tooltip("Determents the smoothness of the trajectory")]
+    [SerializeField] private int _pathCount;
 
     /// <summary>
     /// Initiates shooting a projectile from origin to target
@@ -25,7 +21,7 @@ public class ShootingBehavior : MonoBehaviour {
         List<Vector3> path = GetPath(origin, target, projectile);
         if(path == null) {
             Debug.LogError("The path is empty");
-            return; 
+            return;
         }
         StartCoroutine(MoveProjectile(shotProjectile, path, projectile.Speed, projectile));
     }
@@ -53,7 +49,7 @@ public class ShootingBehavior : MonoBehaviour {
             case ShootingType.Path:
                 return new List<Vector3>() { origin, target };
             case ShootingType.Point:
-                return GetSlerpPoints(origin, target, _centerOffset, _count);
+                return GetSlerpPoints(origin, target, _centerOffset, _pathCount);
             default:
                 Debug.LogError($"Flying behavior of type {projectile.ShootingType} is not defined");
                 return null;
