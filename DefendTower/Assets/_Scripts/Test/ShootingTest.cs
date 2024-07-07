@@ -8,8 +8,9 @@ public class ShootingTest : MonoBehaviour{
 
     public Transform start, end;
 
-    
     public ShootingBehavior shoot;
+    public EnemyManager enemyManager;
+
     private ProjectileInfo projectile;
     private void Start() {
         projectile = new ProjectileInfo(ProjectilePrefab, ShootingType, Speed, SpeedCurve);
@@ -18,6 +19,9 @@ public class ShootingTest : MonoBehaviour{
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {
             shoot.Shoot(start.position,end.position, projectile);
+        }
+        if(Input.GetKeyDown(KeyCode.S)) {
+            enemyManager.SpawnUnit(EnemyType.Skeleton);
         }
     }
 }

@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager> {
     /// </summary>
     public Action<GameState> OnGameStateChange;
 
-
     private void Start() => ChangeState(GameState.SpawnMap);
 
     /// <summary>
