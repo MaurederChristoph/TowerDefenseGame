@@ -17,8 +17,6 @@ public abstract class Singleton<T> : StaticInstance<T> where T : MonoBehaviour {
         }
         base.Awake();
     }
-
-
 }
 
 public class SingletonPersistent<T> : Singleton<T> where T : MonoBehaviour {

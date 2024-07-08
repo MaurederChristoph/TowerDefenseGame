@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Spawns and moves projectile form origin to destination based on projectile <see cref="ShootingType"/>
+/// </summary>
 public class ShootingBehavior : MonoBehaviour {
     [Tooltip("Determents the amplitude of the curve")]
     [SerializeField] private Vector3 _centerOffset;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// test will be deleted
+/// </summary>
 public class ShootingTest : MonoBehaviour{
     public GameObject ProjectilePrefab;
     public float Speed;

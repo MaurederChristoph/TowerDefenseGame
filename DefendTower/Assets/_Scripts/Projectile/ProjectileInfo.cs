@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Info of current data of instantiated projectile
+/// </summary>
 public class ProjectileInfo {
     /// <summary>
     /// Initializes a new instance of the <see cref="ProjectileInfo"/> class.
