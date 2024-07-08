@@ -1,11 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Splines;
 
+/// <summary>
+/// Handles Action that concern enemies
+/// </summary>
 public class EnemyManager : MonoBehaviour {
+    private readonly List<EnemyBase> _enemies = new();
+    /// <summary>
+    /// Returns a copy of all current enemies
+    /// </summary>
+    public List<EnemyBase> Enemies => _enemies.ToList();
+
     [Tooltip("Represents the lane where enemies walk on")]
     [SerializeField] private Lane _highLane, _midLane, _lowLane;
     [Tooltip("Represents the total time in which a enemy batch is spawned")]
@@ -16,8 +23,19 @@ public class EnemyManager : MonoBehaviour {
     /// </summary>
     private ScriptableEnemyCombatData _enemyCombatInfo;
 
+
     private void Start() {
         _enemyCombatInfo = Resources.Load<ScriptableEnemyCombatData>("EnemyCombatData");
+        AddEnemySpawnListeners();
+    }
+
+    /// <summary>
+    /// Adds a listener to all enemy spawn events
+    /// </summary>
+    private void AddEnemySpawnListeners() {
+        _highLane.AddEnemySpawnListener(AddEnemy);
+        _midLane.AddEnemySpawnListener(AddEnemy);
+        _lowLane.AddEnemySpawnListener(AddEnemy);
     }
 
     /// <summary>
@@ -45,8 +63,22 @@ public class EnemyManager : MonoBehaviour {
     /// Searched the <see cref="ScriptableEnemyCombatData"/> for a given enemy type
     /// </summary>
     /// <param name="enemyType">The enemy type for which it will search</param>
-    /// <returns><see cref="CombatData"/> for the given <see cref="EnemyType"/></returns>
-    private CombatData GetCombatData(EnemyType enemyType) {
+    /// <returns><see cref="CombatDataInfo"/> for the given <see cref="EnemyType"/></returns>
+    private CombatDataInfo GetCombatData(EnemyType enemyType) {
         return _enemyCombatInfo.CombatData.First(e => e.scriptableEnemy.EnemyType == enemyType);
+    }
+
+    /// <summary>
+    /// Adds and enemy to the currently alive enemies
+    /// </summary>
+    /// <param name="enemy">The enemy that is to add</param>
+    private void AddEnemy(EnemyBase enemy) {
+        _enemies.Add(enemy);
+    }
+
+    private void OnDestroy() {
+        _lowLane.RemoveEnemySpawnListener(AddEnemy);
+        _midLane.RemoveEnemySpawnListener(AddEnemy);
+        _highLane.RemoveEnemySpawnListener(AddEnemy);
     }
 }

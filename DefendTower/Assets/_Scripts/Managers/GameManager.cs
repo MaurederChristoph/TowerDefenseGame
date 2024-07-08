@@ -1,8 +1,15 @@
 using System;
-using UnityEngine;
 
+/// <summary>
+/// Handles the game flow
+/// </summary>
 public class GameManager : Singleton<GameManager> {
     public GameState CurrentGameState { get; private set; }
+
+    /// <summary>
+    /// The current instance of the enemy manager
+    /// </summary>
+    public EnemyManager EnemyManager { get; private set; }
 
     /// <summary>
     /// Event triggered when the game state changes

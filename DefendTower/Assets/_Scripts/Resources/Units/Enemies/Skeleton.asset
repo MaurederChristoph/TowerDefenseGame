@@ -17,7 +17,7 @@ MonoBehaviour:
   <Power>k__BackingField: 5
   <AttackSpeed>k__BackingField: 1
   <Range>k__BackingField: 5
-  <InBetweenBurstShotsMultiplier>k__BackingField: 1
-  <BurstReloadMultiplier>k__BackingField: 1
+  <AttackTargets>k__BackingField: 1
+  <AttackTargetingStrategy>k__BackingField: 1
   <Time>k__BackingField: 22
   <EnemyType>k__BackingField: 0

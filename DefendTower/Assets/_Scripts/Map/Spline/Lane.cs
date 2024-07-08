@@ -2,11 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
-
+/// <summary>
+/// Spawns enemies from a queue to the track 
+/// </summary>
 public class Lane : MonoBehaviour {
+    /// <summary>
+    /// The queue of enemies that will be spawned
+    /// </summary>
     private readonly Queue<ScriptableEnemy> _units = new();
+    
+    /// <summary>
+    /// The amount of ticks it takes for a new enemy to spawn
+    /// </summary>
     private int _spawnCycleTicks;
+    
+    /// <summary>
+    /// The ticks (fixedDeltaTime) that happened since the last enemy was spawned
+    /// </summary>
     private int _ticksSinceLastSpawn = 0;
+
+    /// <summary>
+    /// Event that will be invoked when an enemy is spawned
+    /// </summary>
+    private Action<EnemyBase> _onEnemySpawn;
 
     private void FixedUpdate() {
         _ticksSinceLastSpawn++;
@@ -15,6 +33,7 @@ public class Lane : MonoBehaviour {
             _ticksSinceLastSpawn = 0;
         }
     }
+
     /// <summary>
     /// Instantiates the first unit in the queue
     /// </summary>
@@ -25,6 +44,7 @@ public class Lane : MonoBehaviour {
         var unitSplineAnimator = unitInstance.GetComponent<SplineAnimate>();
         unitSplineAnimator.Duration = unit.Time;
         unitSplineAnimator.Container = GetComponent<SplineContainer>();
+        _onEnemySpawn?.Invoke((EnemyBase)unitInstance);
     }
 
     /// <summary>
@@ -37,6 +57,7 @@ public class Lane : MonoBehaviour {
             _units.Enqueue(unitType);
         }
     }
+
     /// <summary>
     /// Adds empty slots into the queue to delay a later spawn
     /// </summary>
@@ -46,10 +67,26 @@ public class Lane : MonoBehaviour {
     }
 
     /// <summary>
-    /// Sets the tick rate for the current spawn cycle 
+    /// Sets the tick rate for the current spawn batch 
     /// </summary>
     /// <param name="tickRate">The time interval in seconds between each spawn in a batch</param>
     public void SetTickRate(float tickRate) {
         _spawnCycleTicks = Convert.ToInt32(tickRate / Time.fixedDeltaTime);
+    }
+
+    /// <summary>
+    /// Adds a method to an event that is called when an enemy is spawned
+    /// </summary>
+    /// <param name="listener">The method that will be called</param>
+    public void AddEnemySpawnListener(Action<EnemyBase> listener) {
+        _onEnemySpawn += listener;
+    }
+
+    /// <summary>
+    /// Removes a method of an event that is called when an enemy is spawned
+    /// </summary>
+    /// <param name="listener">The method that will be removed</param>
+    public void RemoveEnemySpawnListener(Action<EnemyBase> listener) {
+        _onEnemySpawn -= listener;
     }
 }
