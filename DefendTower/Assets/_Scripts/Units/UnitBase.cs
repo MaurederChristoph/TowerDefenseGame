@@ -31,6 +31,10 @@ public class UnitBase : MonoBehaviour {
     /// </summary>
     public TargetingStrategy AttackTargetingStrategy { get; private set; }
     /// <summary>
+    /// The projectile the units is shooting
+    /// </summary>
+    public ScriptableProjectile Projectile { get; private set; }
+    /// <summary>
     /// The amount off projectiles that are shot before reloading
     /// </summary>
     public float BurstSize { get; private set; }
@@ -48,6 +52,18 @@ public class UnitBase : MonoBehaviour {
     /// </summary>
     public UnitBase AttackTarget { get; private set; }
 
-    private void Start() {
+    /// <summary>
+    /// Translates unit properties form scriptable unit object to unit script
+    /// </summary>
+    /// <typeparam name="T">Type of scriptable unit</typeparam>
+    /// <param name="unit">Scriptable unit</param>
+    public virtual void InitUnit(ScriptableUnit unit) {
+        MaxHealth = unit.MaxHealth;
+        Power = unit.Power;
+        AttackSpeed = unit.AttackSpeed;
+        Range = unit.Range;
+        AttackTargetFaction = unit.AttackTargets;
+        AttackTargetingStrategy = TargetingStrategy.FromType(unit.AttackTargetingStrategy);
+        Projectile = unit.Projectile;
     }
 }

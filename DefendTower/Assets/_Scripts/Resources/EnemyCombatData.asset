@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: EnemyCombatData
   m_EditorClassIdentifier: 
   <CombatData>k__BackingField:
-  - EnemyType: 0
-    scriptableEnemy: {fileID: 11400000, guid: 43fd9a2ee357fae4dbba648c62c8f534, type: 2}
+  - scriptableEnemy: {fileID: 11400000, guid: 43fd9a2ee357fae4dbba648c62c8f534, type: 2}
     Icon: {fileID: 0}
     CombatValue: 1
     UnitAmount: 4
