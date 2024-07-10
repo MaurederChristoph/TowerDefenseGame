@@ -42,7 +42,7 @@ public class ProjectileInfo {
     /// Handles the projectile when it reaches its destination
     /// </summary>
     /// <param name="shotProjectile">The instance of the projectile</param>
-    public void ReachedDestination(GameObject shotProjectile) {
-        GameObject.Destroy(shotProjectile);
+    public static void ReachedDestination(GameObject shotProjectile) {
+        Object.Destroy(shotProjectile);
     }
 }

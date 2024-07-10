@@ -18,19 +18,30 @@ public class TargetingStrategy {
     /// </summary>
     public TargetingStrategyType Type { get; }
 
-    /// <summary>
+    ///<summary>
     /// <para>Gets the next target valid target</para>
     /// <para>Params:</para>
     /// <para>- <see cref="UnitBase"/>: Origin</para>
     /// <para>- <see cref="IEnumerable{T}"/>: List of potential Targets</para>
     /// <para>Returns: <see cref="UnitBase"/> of target</para>
     /// </summary>
-    public Func<UnitBase, IEnumerable<UnitBase>, UnitBase> GetNextTarget { get; }
+    private Func<UnitBase, IEnumerable<UnitBase>, UnitBase> OnGetNextTarget { get; }
+
+
+    /// <summary>
+    /// Gets the next target valid target
+    /// </summary>
+    /// <param name="origin">Unit that wants to attack</param>
+    /// <param name="targetList">List of valid targets</param>
+    /// <returns>The chosen target</returns>
+    public UnitBase GetNextTarget(UnitBase origin, IEnumerable<UnitBase> targetList) {
+        return OnGetNextTarget.Invoke(origin, targetList);
+    }
 
     private TargetingStrategy(string name, TargetingStrategyType type, Func<UnitBase, IEnumerable<UnitBase>, UnitBase> getNextTarget) {
         Name = name;
         Type = type;
-        GetNextTarget = getNextTarget;
+        OnGetNextTarget = getNextTarget;
     }
 
     /// <summary>

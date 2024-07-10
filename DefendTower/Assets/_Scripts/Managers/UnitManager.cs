@@ -13,21 +13,18 @@ public class UnitManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Get a new target
     /// </summary>
-    /// <param name="origin"></param>
-    /// <param name="currentTarget"></param>
-    /// <returns></returns>
+    /// <param name="origin">The unit that needs a target</param>
+    /// <param name="toTarget">The targets faction</param>
+    /// <returns>The chosen target</returns>
     public UnitBase GetTargeting(UnitBase origin, Faction toTarget) {
-        IEnumerable<UnitBase> targets = null;
-        switch(toTarget) {
-            case Faction.Tower:
-                targets = _enemyManager.Enemies;
-                break;
-            case Faction.Enemy:
-                throw new NotImplementedException();
-        }
-       return origin.AttackTargetingStrategy.GetNextTarget(origin, targets);
+        IEnumerable<UnitBase> targets = toTarget switch {
+            Faction.Tower => _enemyManager.Enemies,
+            Faction.Enemy => throw new NotImplementedException(),
+            _ => null,
+        };
+        return origin.AttackTargetingStrategy.GetNextTarget(origin, targets);
     }
 }
 

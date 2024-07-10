@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using UnityEngine;
 
 /// <summary>
 /// Base class for all towers 
@@ -41,7 +39,6 @@ public class TowerBase : UnitBase {
     /// <summary>
     /// Translates tower properties form scriptable tower object to tower script
     /// </summary>
-    /// <typeparam name="T">Type of scriptable unit</typeparam>
     /// <param name="unit">Scriptable unit</param>
     public override void InitUnit(ScriptableUnit unit) {
         base.InitUnit(unit);
@@ -51,5 +48,6 @@ public class TowerBase : UnitBase {
         MaxMana = tower.MaxMana;
         ManaRegeneration = tower.ManaRegeneration;
         CastingSpeed = tower.CastingSpeed;
-    }    
+        Stats = tower.Stats;
+    }
 }

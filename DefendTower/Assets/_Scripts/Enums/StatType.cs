@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Used to reference the stat type
+/// Used to reference a type of stat
 /// </summary>
 public enum StatType {
     Str,

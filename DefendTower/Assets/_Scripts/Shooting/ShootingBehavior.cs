@@ -117,6 +117,6 @@ public class ShootingBehavior : MonoBehaviour {
     /// <param name="projectile">Details about the projectile</param>
     /// <param name="shotProjectile">Instance of the projectile</param>
     private void ReachedDestination(ProjectileInfo projectile, GameObject shotProjectile) {
-        projectile.ReachedDestination(shotProjectile);
+        ProjectileInfo.ReachedDestination(shotProjectile);
     }
 }
