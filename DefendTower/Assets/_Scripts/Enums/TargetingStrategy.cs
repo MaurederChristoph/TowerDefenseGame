@@ -22,7 +22,7 @@ public class TargetingStrategy {
     /// <para>Gets the next target valid target</para>
     /// <para>Params:</para>
     /// <para>- <see cref="UnitBase"/>: Origin</para>
-    /// <para>- <see cref="IEnumerable{}"/>: List of potential Targets</para>
+    /// <para>- <see cref="IEnumerable{T}"/>: List of potential Targets</para>
     /// <para>Returns: <see cref="UnitBase"/> of target</para>
     /// </summary>
     public Func<UnitBase, IEnumerable<UnitBase>, UnitBase> GetNextTarget { get; }
@@ -36,22 +36,23 @@ public class TargetingStrategy {
     /// <summary>
     /// Targets self
     /// </summary>
-    public static TargetingStrategy Self = new("Self", TargetingStrategyType.Self, SelfTargeting);
+    public readonly static TargetingStrategy Self = new("Self", TargetingStrategyType.Self, SelfTargeting);
 
     /// <summary>
     /// Targets the closest target within the towers range
     /// </summary>
-    public static TargetingStrategy Closest = new("Closest", TargetingStrategyType.Closest, ClosestTargeting);
+    public readonly static TargetingStrategy Closest = new("Closest", TargetingStrategyType.Closest, ClosestTargeting);
 
     /// <summary>
     /// Targets the furthest target within the towers range
     /// </summary>
-    public static TargetingStrategy Furthest = new("Furthest", TargetingStrategyType.Furthest, FurthestTargeting);
+    public readonly static TargetingStrategy Furthest = new("Furthest", TargetingStrategyType.Furthest, FurthestTargeting);
 
     /// <summary>
     /// Targets the current target if alive otherwise targets the furthest target on the track within range
     /// </summary>
-    public static TargetingStrategy UntilTargetDeath = new("UntilTargetDeath", TargetingStrategyType.UntilTargetDeath, UntilTargetDeathTargeting);
+    public readonly static TargetingStrategy UntilTargetDeath =
+        new("UntilTargetDeath", TargetingStrategyType.UntilTargetDeath, UntilTargetDeathTargeting);
 
     /// <summary>
     /// Maps serialized TargetingStrategyType to corresponding TargetingStrategy
@@ -110,15 +111,15 @@ public class TargetingStrategy {
     /// <param name="min">searches closest(true) or furthest(false) target</param>
     /// <returns>Closest or furthest target form the origin within range of said origin</returns>
     private static UnitBase DistanceBasedTargeting(UnitBase origin, IEnumerable<UnitBase> targets, bool min) {
-        if(targets.Count() == 0) { return null; }
         var currentDistance = min ? float.MaxValue : float.MinValue;
         UnitBase returnTarget = null;
         foreach(var target in targets) {
             var distance = Vector3.Distance(target.transform.position, origin.transform.position);
-            if(distance < origin.Range && min ? (distance < currentDistance) : (distance > currentDistance)) {
-                currentDistance = distance;
-                returnTarget = target;
+            if(distance > origin.Range && min ? (distance > currentDistance) : (distance < currentDistance)) {
+                continue;
             }
+            currentDistance = distance;
+            returnTarget = target;
         }
         return returnTarget;
     }

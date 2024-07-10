@@ -7,9 +7,14 @@ public class GameManager : Singleton<GameManager> {
     public GameState CurrentGameState { get; private set; }
 
     /// <summary>
-    /// The current instance of the enemy manager
+    /// Reference to the current instance of the enemy manager
     /// </summary>
     public EnemyManager EnemyManager { get; private set; }
+
+    /// <summary>
+    /// Reference to the current instance of the Delayed Action Handler
+    /// </summary>
+    public DelayedActionHandler DelayedActionHandler { get; private set; }
 
     /// <summary>
     /// Event triggered when the game state changes

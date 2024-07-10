@@ -10,16 +10,16 @@ public class Lane : MonoBehaviour {
     /// The queue of enemies that will be spawned
     /// </summary>
     private readonly Queue<ScriptableEnemy> _units = new();
-    
+
     /// <summary>
     /// The amount of ticks it takes for a new enemy to spawn
     /// </summary>
     private int _spawnCycleTicks;
-    
+
     /// <summary>
     /// The ticks (fixedDeltaTime) that happened since the last enemy was spawned
     /// </summary>
-    private int _ticksSinceLastSpawn = 0;
+    private int _ticksSinceLastSpawn;
 
     /// <summary>
     /// Event that will be invoked when an enemy is spawned
@@ -33,7 +33,7 @@ public class Lane : MonoBehaviour {
             _ticksSinceLastSpawn = 0;
         }
     }
-
+    
     /// <summary>
     /// Instantiates the first unit in the queue
     /// </summary>

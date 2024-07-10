@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Data Storage for all enemies
+/// Data Storage for all enemies    
 /// </summary>
 [CreateAssetMenu(menuName = "Enemy", fileName = "Enemy")]
 public class ScriptableEnemy : ScriptableUnit {
