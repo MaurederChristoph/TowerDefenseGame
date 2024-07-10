@@ -6,10 +6,23 @@ using UnityEngine;
 /// Handles functions that concern all units
 /// </summary>
 public class UnitManager : MonoBehaviour {
+    /// <summary>
+    /// Reference to the current instance of the game manager 
+    /// </summary>
+    private GameManager _gameManager;
+    /// <summary>
+    /// Reference to the current instance of the enemy manager
+    /// </summary>
     private EnemyManager _enemyManager;
+    /// <summary>
+    /// Reference to the current instance of the tower manager
+    /// </summary>
+    private TowerManager _towerManager;
 
     private void Start() {
-        _enemyManager = GameManager.Instance.EnemyManager;
+        _gameManager = GameManager.Instance;
+        _enemyManager = _gameManager.EnemyManager;
+        _towerManager = _gameManager.TowerManager;
     }
 
     /// <summary>
@@ -18,13 +31,12 @@ public class UnitManager : MonoBehaviour {
     /// <param name="origin">The unit that needs a target</param>
     /// <param name="toTarget">The targets faction</param>
     /// <returns>The chosen target</returns>
-    public UnitBase GetTargeting(UnitBase origin, Faction toTarget) {
+    public UnitBase GetTarget(UnitBase origin, Faction toTarget) {
         IEnumerable<UnitBase> targets = toTarget switch {
             Faction.Tower => _enemyManager.Enemies,
-            Faction.Enemy => throw new NotImplementedException(),
+            Faction.Enemy => _towerManager.Towers,
             _ => null,
         };
         return origin.AttackTargetingStrategy.GetNextTarget(origin, targets);
     }
 }
-
