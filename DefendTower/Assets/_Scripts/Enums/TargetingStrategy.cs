@@ -35,7 +35,7 @@ public class TargetingStrategy {
     /// <param name="targetList">List of valid targets</param>
     /// <returns>The chosen target</returns>
     public UnitBase GetNextTarget(UnitBase origin, IEnumerable<UnitBase> targetList) {
-        return OnGetNextTarget.Invoke(origin, targetList);
+        return OnGetNextTarget?.Invoke(origin, targetList);
     }
 
     private TargetingStrategy(string name, TargetingStrategyType type, Func<UnitBase, IEnumerable<UnitBase>, UnitBase> getNextTarget) {
@@ -100,10 +100,15 @@ public class TargetingStrategy {
         return DistanceBasedTargeting(origin, targets, false);
     }
     /// <summary>
-    /// Return the current target if alive otherwise return the furthest target on the track within range
+    /// Return the current target if alive otherwise and within range return the furthest target on the track within range
     /// </summary>
     private static UnitBase UntilTargetDeathTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
-        return origin.AttackTarget != null ? origin.AttackTarget : FirstTargeting(origin, targets);
+        if(origin.AttackTarget != null &&
+           Vector3.Distance(origin.transform.position, origin.AttackTarget.transform.position) < origin.Range) {
+            return origin.AttackTarget;
+        } else {
+            return FirstTargeting(origin, targets);
+        }
     }
     /// <summary>
     /// Return the furthest target on the track within range
@@ -126,7 +131,7 @@ public class TargetingStrategy {
         UnitBase returnTarget = null;
         foreach(var target in targets) {
             var distance = Vector3.Distance(target.transform.position, origin.transform.position);
-            if(distance > origin.Range && min ? (distance > currentDistance) : (distance < currentDistance)) {
+            if(distance > origin.Range || min ? (distance > currentDistance) : (distance < currentDistance)) {
                 continue;
             }
             currentDistance = distance;
