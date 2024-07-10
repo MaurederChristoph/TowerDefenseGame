@@ -9,12 +9,22 @@ public class GameManager : Singleton<GameManager> {
     /// <summary>
     /// Reference to the current instance of the enemy manager
     /// </summary>
-    public EnemyManager EnemyManager { get; private set; }
+    public EnemyManager EnemyManager { get; }
 
     /// <summary>
     /// Reference to the current instance of the Delayed Action Handler
     /// </summary>
-    public DelayedActionHandler DelayedActionHandler { get; private set; }
+    public DelayedActionHandler DelayedActionHandler { get; }
+
+    /// <summary>
+    /// Reference to the current instance of the Unit Manager
+    /// </summary>
+    public UnitManager UnitManager { get; }
+
+    /// <summary>
+    /// Reference to the current instance of the Tower Manager
+    /// </summary>
+    public TowerManager TowerManager { get; }
 
     /// <summary>
     /// Event triggered when the game state changes
@@ -41,4 +51,3 @@ public class GameManager : Singleton<GameManager> {
         OnGameStateChange?.Invoke(gameState);
     }
 }
-
