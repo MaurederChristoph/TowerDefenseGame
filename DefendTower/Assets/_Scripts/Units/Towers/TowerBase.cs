@@ -13,7 +13,7 @@ public class TowerBase : UnitBase {
     /// </summary>
     public ScriptableProjectile SpellProjectile { get; private set; }
     /// <summary>
-    /// How the unit will choose it's target for spells
+    /// How the unit will choose its target for spells
     /// </summary>
     public TargetingStrategy SpellTargetingStrategy { get; private set; }
     /// <summary>
@@ -36,11 +36,17 @@ public class TowerBase : UnitBase {
     /// The stats that are changed temporary and displayed in the UI
     /// </summary>
     public List<Stats> TempStats { get; private set; }
+
+    /// <summary>
+    /// The current mana a unit has
+    /// </summary>
+    private int currentMana;
+    
     /// <summary>
     /// Translates tower properties form scriptable tower object to tower script
     /// </summary>
     /// <param name="unit">Scriptable unit</param>
-    public override void InitUnit(ScriptableUnit unit) {
+    protected override void InitUnit(ScriptableUnit unit) {
         base.InitUnit(unit);
         var tower = (ScriptableTower)unit;
         SpellProjectile = tower.SpellProjectile;
@@ -48,6 +54,7 @@ public class TowerBase : UnitBase {
         MaxMana = tower.MaxMana;
         ManaRegeneration = tower.ManaRegeneration;
         CastingSpeed = tower.CastingSpeed;
+        SpellTargets = tower.SpellTargets;
         Stats = tower.Stats;
     }
 }

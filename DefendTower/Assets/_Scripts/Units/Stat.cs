@@ -8,17 +8,19 @@ using UnityEngine;
 /// </summary>
 [Serializable]
 public class Stat {
-    public Action<int> OnStatChange;
+    /// <summary>
+    /// Called when the stat is changed
+    /// </summary>
+    private Action<int> _onStatChange;
+    
     /// <summary>
     /// Total stat value
     /// </summary>
     public int Value => BaseStat + TempStats.Sum();
-
     /// <summary>
     /// Permanent stat value
     /// </summary>
     [field: SerializeField] public int BaseStat { get; private set; }
-
     /// <summary>
     /// List of the current stat modifications
     /// </summary>
@@ -50,7 +52,7 @@ public class Stat {
         } else {
             BaseStat = +value;
         }
-        OnStatChange.Invoke(Value);
+        _onStatChange.Invoke(Value);
     }
     /// <summary>
     /// Removes a temporary stat change
@@ -58,7 +60,7 @@ public class Stat {
     /// <param name="key">The key of the stat change</param>
     private void RemoveTempStatChange(string key) {
         _tempStatModifiers.Remove(key);
-        OnStatChange.Invoke(Value);
+        _onStatChange.Invoke(Value);
     }
 
     /// <summary>
@@ -66,7 +68,7 @@ public class Stat {
     /// </summary>
     /// <param name="listener">The method that will be called</param>
     public void AddStatChangeListener(Action<int> listener) {
-        OnStatChange += listener;
+        _onStatChange += listener;
     }
 
     /// <summary>
@@ -74,6 +76,6 @@ public class Stat {
     /// </summary>
     /// <param name="listener">The method that will be removed</param>
     public void RemoveStatChangeListener(Action<int> listener) {
-        OnStatChange += listener;
+        _onStatChange += listener;
     }
 }

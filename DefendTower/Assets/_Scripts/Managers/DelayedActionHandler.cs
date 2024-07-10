@@ -31,7 +31,7 @@ public class DelayedActionHandler : MonoBehaviour {
     /// <returns>IEnumerator for coroutine management</returns>
     private static IEnumerator CallAfterSecondsCoroutine(Action<string> action, float seconds, string key) {
         yield return new WaitForSeconds(seconds);
-        action?.Invoke(key);
+        action.Invoke(key);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class DelayedActionHandler : MonoBehaviour {
             yield return new WaitForFixedUpdate();
             frameCount--;
         }
-        action?.Invoke(key);
+        action.Invoke(key);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class DelayedActionHandler : MonoBehaviour {
     /// <returns>IEnumerator for coroutine management</returns>
     private static IEnumerator CallAtEndOfFrameCoroutine(Action<string> action, string key) {
         yield return new WaitForEndOfFrame();
-        action?.Invoke(key);
+        action.Invoke(key);
     }
 
     /// <summary>

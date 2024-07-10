@@ -7,6 +7,9 @@ using UnityEngine;
 /// Handles Action that concern enemies
 /// </summary>
 public class EnemyManager : MonoBehaviour {
+    /// <summary>
+    /// List of all currently alive enemies
+    /// </summary>
     private readonly List<EnemyBase> _enemies = new();
     /// <summary>
     /// Returns a copy of all current enemies
@@ -42,7 +45,7 @@ public class EnemyManager : MonoBehaviour {
     /// Calculates the enemy batch distribution and forwards it to each <see cref="Lane"/>
     /// </summary>
     /// <param name="enemyType">The type of enemy for which a batch will be spawned</param>
-    public void SpawnUnit(EnemyType enemyType) {
+    public void SpawnEnemy(EnemyType enemyType) {
         var unitData = GetCombatData(enemyType);
         var outerAmount = unitData.UnitAmount / 2;
         var tickRate = _spawningInterval / (outerAmount + 1);

@@ -24,7 +24,7 @@ public class ShootingTest : MonoBehaviour{
             shoot.Shoot(start.position,end.position, projectile);
         }
         if(Input.GetKeyDown(KeyCode.S)) {
-            enemyManager.SpawnUnit(EnemyType.Skeleton);
+            enemyManager.SpawnEnemy(EnemyType.Skeleton);
         }
     }
 }
