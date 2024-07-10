@@ -18,4 +18,6 @@ public class ScriptableUnit : ScriptableObject {
     [field: SerializeField] public Faction AttackTargets { get; private set; }
     [Tooltip("How the unit will choose it's target for basic attacks")]
     [field: SerializeField] public TargetingStrategyType AttackTargetingStrategy { get; private set; }
+    [Tooltip("The default projectile the units will shoot")]
+    [field: SerializeField] public ScriptableProjectile Projectile { get; private set; }
 }
