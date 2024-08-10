@@ -17,16 +17,17 @@ public class ShootingBehavior : MonoBehaviour {
     /// </summary>
     /// <param name="origin">Starting position of the projectile</param>
     /// <param name="target">Target position where the projectile should hit</param>
-    /// <param name="projectile">Details about the projectile</param>
-    public void Shoot(Vector3 origin, Vector3 target, ProjectileInfo projectile) {
-        var direction = GetAngle(origin, target);
-        var shotProjectile = Instantiate(projectile.ProjectilePrefab, origin, direction);
-        List<Vector3> path = GetPath(origin, target, projectile);
+    /// <param name="baseTowerProjectile">Details about the projectile</param>
+    public void Shoot(Vector3 origin, UnitBase target, ProjectileInfo baseTowerProjectile) {
+        var direction = GetAngle(origin, target.transform.position);
+        var shotProjectile = Instantiate(baseTowerProjectile.ProjectilePrefab, origin, direction);
+        baseTowerProjectile.Target = target;
+        List<Vector3> path = GetPath(origin, target.transform.position, baseTowerProjectile);
         if(path == null) {
             Debug.LogError("The path is empty");
             return;
         }
-        StartCoroutine(MoveProjectile(shotProjectile, path, projectile.Speed, projectile));
+        StartCoroutine(MoveProjectile(shotProjectile, path, baseTowerProjectile.Speed, baseTowerProjectile));
     }
 
     /// <summary>
@@ -117,6 +118,6 @@ public class ShootingBehavior : MonoBehaviour {
     /// <param name="projectile">Details about the projectile</param>
     /// <param name="shotProjectile">Instance of the projectile</param>
     private void ReachedDestination(ProjectileInfo projectile, GameObject shotProjectile) {
-        ProjectileInfo.ReachedDestination(shotProjectile);
+        projectile.ReachedDestination(shotProjectile);
     }
 }

@@ -84,4 +84,10 @@ public class EnemyManager : MonoBehaviour {
         _midLane.RemoveEnemySpawnListener(AddEnemy);
         _highLane.RemoveEnemySpawnListener(AddEnemy);
     }
+    public void RemoveEnemy(EnemyBase enemy) {
+        if(!_enemies.Contains(enemy)) {
+            return;
+        }
+        _enemies.Remove(enemy);
+    }
 }

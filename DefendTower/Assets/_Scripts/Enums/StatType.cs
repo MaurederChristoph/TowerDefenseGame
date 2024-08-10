@@ -8,5 +8,6 @@ public enum StatType {
     Int,
     Cha,
     Wis,
+    None,
 }
 

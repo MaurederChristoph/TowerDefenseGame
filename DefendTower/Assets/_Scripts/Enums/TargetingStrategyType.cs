@@ -5,5 +5,6 @@ public enum TargetingStrategyType {
 	Self,
 	Closest,
 	Furthest,
-	UntilTargetDeath
+	UntilTargetDeath,
+	Taunt,
 }

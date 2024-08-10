@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 /// <summary>
 /// Handles the game flow
@@ -9,22 +10,37 @@ public class GameManager : Singleton<GameManager> {
     /// <summary>
     /// Reference to the current instance of the enemy manager
     /// </summary>
-    public EnemyManager EnemyManager { get; }
+    [field: SerializeField] public EnemyManager EnemyManager { get; private set; }
 
     /// <summary>
     /// Reference to the current instance of the Delayed Action Handler
     /// </summary>
-    public DelayedActionHandler DelayedActionHandler { get; }
+    [field: SerializeField] public DelayedActionHandler DelayedActionHandler { get; private set; }
 
     /// <summary>
     /// Reference to the current instance of the Unit Manager
     /// </summary>
-    public UnitManager UnitManager { get; }
+    [field: SerializeField] public UnitManager UnitManager { get; private set; }
 
     /// <summary>
     /// Reference to the current instance of the Tower Manager
     /// </summary>
-    public TowerManager TowerManager { get; }
+    [field: SerializeField] public TowerManager TowerManager { get; private set; }
+
+    /// <summary>
+    /// Reference to the current instance of the Input Manager 
+    /// </summary>
+    [field: SerializeField] public InputManager InputManager { get; private set; }
+
+    /// <summary>
+    /// Reference to the current instance of the Highlight Manager
+    /// </summary>
+    [field: SerializeField] public HighlightManager HighlightManager { get; private set; }
+
+    /// <summary>
+    /// Reference to the current instance of the Shooting Behavior
+    /// </summary>
+    [field: SerializeField] public ShootingBehavior ShootingBehavior { get; private set; }
 
     /// <summary>
     /// Event triggered when the game state changes

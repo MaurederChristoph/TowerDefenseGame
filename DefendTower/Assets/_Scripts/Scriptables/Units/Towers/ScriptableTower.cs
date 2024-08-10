@@ -17,6 +17,4 @@ public class ScriptableTower : ScriptableUnit {
     [field: SerializeField] public float ManaRegeneration { get; private set; }
     [Tooltip("How Long it takes for the tower to cast its spell")]
     [field: SerializeField] public float CastingSpeed { get; private set; }
-    [Tooltip("The starting stats of the Tower")]
-    [field: SerializeField] public Stats Stats { get; private set; }
 }

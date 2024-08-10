@@ -3,5 +3,5 @@
 /// </summary>
 public enum Faction { 
     Enemy,
-    Tower
+    Tower,
 }

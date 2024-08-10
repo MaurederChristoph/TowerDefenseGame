@@ -2,13 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
 
 /// <summary>
 /// Provides methods to call actions with various types of delays
 /// </summary>
 public class DelayedActionHandler : MonoBehaviour {
-    private readonly Dictionary<string, Action<string>> _keys = new();
+    private readonly static Dictionary<string, Coroutine> _keys = new();
 
     /// <summary>
     /// Calls the specified action after a delay of the specified number of seconds
@@ -17,8 +16,9 @@ public class DelayedActionHandler : MonoBehaviour {
     /// <param name="seconds">The delay after which the method will be called</param>
     /// <returns>Key of the created coroutine</returns>>
     public string CallAfterSeconds(Action<string> action, float seconds) {
-        var key = RegisterKey(action);
-        StartCoroutine(CallAfterSecondsCoroutine(action, seconds, key));
+        var key = GenerateKey();
+        var coroutine = StartCoroutine(CallAfterSecondsCoroutine(action, seconds, key));
+        _keys.Add(key, coroutine);
         return key;
     }
 
@@ -41,8 +41,9 @@ public class DelayedActionHandler : MonoBehaviour {
     /// <param name="frameCount">The number of fixed frames to wait before calling the action</param>
     /// <returns>Key of the created coroutine</returns>>
     public string CallAfterFixedFrames(Action<string> action, int frameCount = 1) {
-        var key = RegisterKey(action);
-        StartCoroutine(CallAfterFixedFramesCoroutine(action, frameCount, key));
+        var key = GenerateKey();
+        var coroutine = StartCoroutine(CallAfterFixedFramesCoroutine(action, frameCount, key));
+        _keys.Add(key, coroutine);
         return key;
     }
 
@@ -67,8 +68,9 @@ public class DelayedActionHandler : MonoBehaviour {
     /// <param name="action">The method that will be called after the delay</param>
     /// <returns>Key of the created coroutine</returns>>
     public string CallAtEndOfFrame(Action<string> action) {
-        var key = RegisterKey(action);
-        StartCoroutine(CallAtEndOfFrameCoroutine(action, key));
+        var key = GenerateKey();
+        Coroutine coroutine = StartCoroutine(CallAtEndOfFrameCoroutine(action, key));
+        _keys.Add(key, coroutine);
         return key;
     }
 
@@ -83,21 +85,12 @@ public class DelayedActionHandler : MonoBehaviour {
         action.Invoke(key);
     }
 
-    /// <summary>
-    /// Registers a action into the current key dictionary
-    /// </summary>
-    /// <param name="action">The method that will ba added to the dictionary</param>
-    /// <returns>The identifier of the action</returns>
-    private string RegisterKey(Action<string> action) {
-        var key = GenerateKey();
-        while(true) {
-            if(!_keys.ContainsKey(key)) {
-                break;
-            }
-            key = GenerateKey();
+    public void StopDelayedAction(string key) {
+        if(!_keys.TryGetValue(key, out var coroutine)) {
+            return;
         }
-        _keys.Add(key, action);
-        return key;
+        StopCoroutine(coroutine);
+        _keys.Remove(key);
     }
 
     /// <summary>

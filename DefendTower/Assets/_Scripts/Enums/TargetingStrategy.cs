@@ -65,6 +65,9 @@ public class TargetingStrategy {
     public readonly static TargetingStrategy UntilTargetDeath =
         new("UntilTargetDeath", TargetingStrategyType.UntilTargetDeath, UntilTargetDeathTargeting);
 
+    public readonly static TargetingStrategy Taunt =
+        new("Taunt", TargetingStrategyType.Taunt, TauntTargeting);
+
     /// <summary>
     /// Maps serialized TargetingStrategyType to corresponding TargetingStrategy
     /// </summary>
@@ -77,6 +80,7 @@ public class TargetingStrategy {
             TargetingStrategyType.Closest => Closest,
             TargetingStrategyType.Furthest => Furthest,
             TargetingStrategyType.UntilTargetDeath => UntilTargetDeath,
+            TargetingStrategyType.Taunt => Taunt,
             _ => throw new NotSupportedException(),
         };
     }
@@ -87,36 +91,63 @@ public class TargetingStrategy {
     private static UnitBase SelfTargeting(UnitBase origin, IEnumerable<UnitBase> _) {
         return origin;
     }
+
     /// <summary>
     /// Return the closest target within the towers range
     /// </summary>
     private static UnitBase ClosestTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
         return DistanceBasedTargeting(origin, targets, true);
     }
+
     /// <summary>
     /// Return the furthest target within the towers range
     /// </summary>
     private static UnitBase FurthestTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
         return DistanceBasedTargeting(origin, targets, false);
     }
+
     /// <summary>
     /// Return the current target if alive otherwise and within range return the furthest target on the track within range
     /// </summary>
     private static UnitBase UntilTargetDeathTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
-        if(origin.AttackTarget != null &&
+        if(origin != null && origin.AttackTarget != null &&
            Vector3.Distance(origin.transform.position, origin.AttackTarget.transform.position) < origin.Range) {
             return origin.AttackTarget;
-        } else {
-            return FirstTargeting(origin, targets);
         }
+        return FirstTargeting(origin, targets);
     }
+
+    /// <summary>
+    /// Returns the target that taunted the unit
+    /// </summary>
+    private static UnitBase TauntTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
+        return origin.AttackTarget;
+    }
+
     /// <summary>
     /// Return the furthest target on the track within range
     /// </summary>
     private static UnitBase FirstTargeting(UnitBase origin, IEnumerable<UnitBase> targets) {
-        return targets.Where(t => Vector3.Distance(t.transform.position, origin.transform.position) < origin.Range)
-            .OrderByDescending(t => t.GetComponent<SplineAnimate>().ElapsedTime)
-            .FirstOrDefault();
+        UnitBase closestTarget = null;
+        var closestDistance = origin.Range;
+        var maxElapsedTime = float.MinValue;
+        foreach(var target in targets) {
+            if(origin == null || target == null) {
+                continue;
+            }
+            var distance = Vector3.Distance(target.transform.position, origin.transform.position);
+            if(distance > closestDistance) {
+                continue;
+            }
+            var elapsedTime = target.GetComponent<SplineAnimate>().ElapsedTime;
+            if(elapsedTime < maxElapsedTime) {
+                continue;
+            }
+            closestTarget = target;
+            maxElapsedTime = elapsedTime;
+        }
+
+        return closestTarget;
     }
 
     /// <summary>
@@ -130,8 +161,11 @@ public class TargetingStrategy {
         var currentDistance = min ? float.MaxValue : float.MinValue;
         UnitBase returnTarget = null;
         foreach(var target in targets) {
+            if(origin == null || target == null) {
+                continue;
+            }
             var distance = Vector3.Distance(target.transform.position, origin.transform.position);
-            if(distance > origin.Range || min ? (distance > currentDistance) : (distance < currentDistance)) {
+            if(distance > origin.Range || (min ? distance > currentDistance : distance < currentDistance)) {
                 continue;
             }
             currentDistance = distance;

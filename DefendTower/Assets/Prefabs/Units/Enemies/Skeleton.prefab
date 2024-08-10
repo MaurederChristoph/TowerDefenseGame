@@ -77,9 +77,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 692764661664542679, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: -9075397155744973645}
   m_SourcePrefab: {fileID: 100100000, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+--- !u!4 &51912310500777835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150057568901135575, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+  m_PrefabInstance: {fileID: 3102748506993959868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2491084991267261547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 692764661664542679, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
@@ -97,3 +102,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a24916809b4a94b9a98dc411ed7c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shootingPoint: {fileID: 51912310500777835}
+  _speedPenalty: 1

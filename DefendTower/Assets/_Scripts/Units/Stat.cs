@@ -29,14 +29,17 @@ public class Stat {
     /// <summary>
     /// Provides a copy of the current stat modifications
     /// </summary>
-    /// 
     public List<int> TempStats => _tempStatModifiers.Values.ToList();
 
-    public Stat(int baseValue) {
+    public StatType StatType { get; private set; }
+
+    public Stat(int baseValue, StatType statType) {
         BaseStat = baseValue;
+        StatType = statType;
     }
 
-    public Stat() {
+    public Stat(StatType statType) {
+        StatType = statType;
         BaseStat = 1;
     }
 

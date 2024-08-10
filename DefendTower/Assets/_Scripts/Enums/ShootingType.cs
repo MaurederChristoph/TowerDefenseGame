@@ -1,5 +1,5 @@
 /// <summary>
-/// determines the precatory and flying behavior of projectiles
+/// determines the trajectory and flying behavior of projectiles
 /// </summary>
 public enum ShootingType { 
     Path,

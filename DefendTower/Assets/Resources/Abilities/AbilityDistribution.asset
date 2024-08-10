@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c0efc5342577f48a6accaa10c52b08, type: 3}
+  m_Name: AbilityDistribution
+  m_EditorClassIdentifier: 
+  Str:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: 33eb6a4577b11e4488d777649b706339, type: 2}
+    - {fileID: 11400000, guid: e5e9a24f09479b34a89e95f44d0a02b2, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: 3ba5dd47e6776ec44afe32e68a8bb727, type: 2}
+    - {fileID: 11400000, guid: 07da924b283ed464296304e886ec5c8d, type: 2}
+  Dex:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: 8f117f65513ea35459a08792ae8c9012, type: 2}
+    - {fileID: 11400000, guid: 6b6719a8cb12c464b8e659a79778d298, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: b3a12bf9036def245b53263d089b717e, type: 2}
+    - {fileID: 11400000, guid: c69b5617e66d8f04b9d21c8d215b7180, type: 2}
+  Con:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: 0cab1c5298dd55848995d10758121c5b, type: 2}
+    - {fileID: 11400000, guid: d3c4b35f405a6614c96dc5dc1872b08d, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: c52db151d6c4d444c9ab8328b6e5a2d7, type: 2}
+    - {fileID: 11400000, guid: 3d632635ab92191458ab439cba601bde, type: 2}
+  Cha:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: 7aab4665accf635478e66c41bb204e9f, type: 2}
+    - {fileID: 11400000, guid: 389c297255c1e3942afadac7ad655a90, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: 3e44ca8e67e58894f9ce34d87e1b7fc6, type: 2}
+    - {fileID: 11400000, guid: 915e032c585be6d44a990520e3e281f5, type: 2}
+  Wis:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: 790082f1c0b18184ab0da5c47dc84417, type: 2}
+    - {fileID: 11400000, guid: 999862001b9d8d24e9f82ebbaf85ebd5, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: 072f68f8325731b43920a5bdf44701de, type: 2}
+    - {fileID: 11400000, guid: 4fda425f633d2dc42b41eaf9778d60c3, type: 2}
+  Int:
+  - AbilityLevel: 5
+    Abilities:
+    - {fileID: 11400000, guid: e70bb2a11b6c4eb4da67af9b0ee1a19f, type: 2}
+    - {fileID: 11400000, guid: 029e9d52aa586c64ba91799e94b7e092, type: 2}
+  - AbilityLevel: 10
+    Abilities:
+    - {fileID: 11400000, guid: 5a9263f4693c39947ae1ae77e8efdb95, type: 2}
+    - {fileID: 11400000, guid: 646ff8ef46636b34eb80295943b6a38a, type: 2}
