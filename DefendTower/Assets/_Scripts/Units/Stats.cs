@@ -8,14 +8,18 @@ using UnityEngine;
 /// </summary>
 [Serializable]
 public class Stats {
-    public static Stat Str { get; private set; } = new(StatType.Str);
-    public static Stat Dex { get; private set; } = new(StatType.Dex);
-    public static Stat Con { get; private set; } = new(StatType.Con);
-    public static Stat Int { get; private set; } = new(StatType.Int);
-    public static Stat Cha { get; private set; } = new(StatType.Cha);
-    public static Stat Wis { get; private set; } = new(StatType.Wis);
+    public Stat Str { get; private set; } = new(StatType.Str);
+    public Stat Dex { get; private set; } = new(StatType.Dex);
+    public Stat Con { get; private set; } = new(StatType.Con);
+    public Stat Int { get; private set; } = new(StatType.Int);
+    public Stat Cha { get; private set; } = new(StatType.Cha);
+    public Stat Wis { get; private set; } = new(StatType.Wis);
 
-    private List<Stat> _statList = new() { Str, Dex, Con, Int, Cha, Wis };
+    public Stats() {
+        _statList = new List<Stat> { Str, Dex, Con, Int, Cha, Wis };
+    }
+
+    private List<Stat> _statList = null;
 
     public Stat GetStatFromType(StatType statType) {
         return _statList.First(s => s.StatType == statType);

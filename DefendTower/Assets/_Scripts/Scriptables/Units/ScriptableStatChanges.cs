@@ -12,5 +12,5 @@ public class ScriptableStatChanges : ScriptableObject {
 [Serializable]
 public class StatChange {
     [field: SerializeField] public StatType StatType { get; private set; }
-    [field: SerializeField] public float Change { get; private set; }
+    [field: SerializeField] public float Amount { get; private set; }
 }

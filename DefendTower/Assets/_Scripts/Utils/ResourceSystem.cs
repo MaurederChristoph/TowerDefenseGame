@@ -11,8 +11,7 @@ public class ResourceSystem : Singleton<ResourceSystem> {
     }
 
     private void AssembleResources() {
-        _statChanges = Resources.Load<ScriptableStatChanges>("");
+        _statChanges = Resources.Load<ScriptableStatChanges>("Stat Changes");
     }
     public ScriptableStatChanges GetScriptableStatChanges() => _statChanges;
-
 }

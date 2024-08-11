@@ -9,7 +9,7 @@ public class UnitBase : MonoBehaviour {
     /// <summary>
     /// The point form where the unit shoots
     /// </summary>
-    [SerializeField] private Transform _shootingPoint;
+    [SerializeField] private Transform shootingPoint;
 
     /// <summary>
     /// Triggered when the health changes 
@@ -43,12 +43,18 @@ public class UnitBase : MonoBehaviour {
     /// <summary>
     /// The Starting health of a unit
     /// </summary>
-    public int MaxHealth { get; private set; }
+    public int MaxHealth {
+        get => _maxHealth + (int)StatChanges.GetStatChange(Stats, StatType.Con);
+        private set => _maxHealth  = value;
+    }
 
     /// <summary>
     /// Represents the damage a unit will do
     /// </summary>
-    public int Power { get; private set; }
+    public int Power {
+        get => _power + (int)StatChanges.GetStatChange(Stats, StatType.Str);
+        private set => _power = value;
+    }
 
     /// <summary>
     /// Multiples the attack speed
@@ -63,9 +69,8 @@ public class UnitBase : MonoBehaviour {
     /// <summary>
     /// Calculated Attack Speed with AttackSpeedMultiplier 
     /// </summary>
-    public float TotalAttackSpeed
-    {
-        get => _attackSpeed * AttackSpeedMultiplier;
+    public float TotalAttackSpeed {
+        get => _attackSpeed * AttackSpeedMultiplier + StatChanges.GetStatChange(Stats, StatType.Dex);
         private set => _attackSpeed = value;
     }
 
@@ -185,6 +190,10 @@ public class UnitBase : MonoBehaviour {
     public List<Stats> TempStats { get; private set; }
 
     private bool _isQuitting = false;
+
+    private int _power;
+    [SerializeField]
+    private int _maxHealth ;
     private void Awake() {
         _gameManager = GameManager.Instance;
         _unitManager = _gameManager.UnitManager;
@@ -199,6 +208,7 @@ public class UnitBase : MonoBehaviour {
     /// </summary>
     /// <param name="unit">Scriptable unit</param>
     public virtual void InitUnit(ScriptableUnit unit) {
+        Stats = unit.Stats;
         MaxHealth = unit.MaxHealth;
         CurrentHealth = MaxHealth;
         Power = unit.Power;
@@ -214,7 +224,6 @@ public class UnitBase : MonoBehaviour {
         BurstReloadMultiplier = unit.BurstReloadMultiplier;
         CreationTime = Time.time;
         _speedChangeTimes = 0;
-        Stats = unit.Stats;
         GetComponent<CircleCollider2D>().radius = Range;
         CheckForShooting();
     }
@@ -244,18 +253,21 @@ public class UnitBase : MonoBehaviour {
         if(newTarget != AttackTarget) {
             AttackTarget = newTarget;
             _attacksAgainstTarget = 1;
-        } else {
+        }
+        else {
             _attacksAgainstTarget++;
         }
         if(newTarget != null) {
             if(BaseProjectile.AttackAgainstTargets % BurstSize == 0) {
                 time = (1 / TotalAttackSpeed) * BurstReloadMultiplier;
-            } else {
+            }
+            else {
                 time = (1 / TotalAttackSpeed) * BurstInBetweenShotsMultiplier;
             }
             BaseProjectile.AttackAgainstTargets = _attacksAgainstTarget;
-            ShootingBehavior.Shoot(_shootingPoint.position, newTarget, BaseProjectile);
-        } else {
+            ShootingBehavior.Shoot(shootingPoint.position, newTarget, BaseProjectile);
+        }
+        else {
             time = Time.fixedDeltaTime;
         }
         _currentShootingKey = _delayedActionHandler.CallAfterSeconds(CheckForShooting, time);
@@ -310,7 +322,8 @@ public class UnitBase : MonoBehaviour {
     public void ChangeAttackSpeedMultiplier(float value) {
         if(AttackSpeedMultiplier + value > 0.1f) {
             AttackSpeedMultiplier += value;
-        } else {
+        }
+        else {
             AttackSpeedMultiplier = 0.1f;
         }
     }
@@ -322,7 +335,8 @@ public class UnitBase : MonoBehaviour {
     public void ChangeBurstAmount(int value) {
         if(BurstSize + value >= 1) {
             BurstSize += value;
-        } else {
+        }
+        else {
             BurstSize = 1;
         }
     }
@@ -334,7 +348,8 @@ public class UnitBase : MonoBehaviour {
     public void ChangeBurstReloadSpeed(float value) {
         if(BurstReloadMultiplier + value >= 0.1f) {
             BurstReloadMultiplier += value;
-        } else {
+        }
+        else {
             BurstReloadMultiplier = 0.1f;
         }
     }
@@ -346,7 +361,8 @@ public class UnitBase : MonoBehaviour {
     public void ChangeBurstInBetweenShotsMultiplier(float value) {
         if(BurstInBetweenShotsMultiplier + value >= 0.1f) {
             BurstInBetweenShotsMultiplier += value;
-        } else {
+        }
+        else {
             BurstInBetweenShotsMultiplier = 0.1f;
         }
     }

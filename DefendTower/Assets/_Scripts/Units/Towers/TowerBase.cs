@@ -31,14 +31,46 @@ public class TowerBase : UnitBase {
     /// The size multiplier of the spell
     /// </summary>
     public float SpellSize { get; private set; }
+
+    /// <summary>
+    /// The amount of damage a spell will do
+    /// </summary>
+    private float _spellPower;
+
+    /// <summary>
+    /// The amount of damage a spell will do
+    /// </summary>
+    public float SpellPower {
+        get => _spellPower + (int)StatChanges.GetStatChange(Stats, StatType.Int);
+        private set => _spellPower = value;
+    }
+
     /// <summary>
     /// How much mana is needed to create cast a spell
     /// </summary>
-    public int MaxMana { get; private set; }
+    private int _maxMana;
+
+    /// <summary>
+    /// How much mana is needed to create cast a spell
+    /// </summary>
+    public int MaxMana {
+        get => _maxMana + (int)StatChanges.GetStatChange(Stats, StatType.Cha);
+        private set => _maxMana = value;
+    }
+
     /// <summary>
     /// How much mana the tower generates per second
     /// </summary>
-    public float ManaRegeneration { get; private set; }
+    private float _manaRegeneration;
+
+    /// <summary>
+    /// How much mana the tower generates per second
+    /// </summary>
+    public float ManaRegeneration {
+        get => _manaRegeneration + (int)StatChanges.GetStatChange(Stats, StatType.Wis);
+        private set => _manaRegeneration = value;
+    }
+
     /// <summary>
     /// How Long it takes for the tower to cast its spell
     /// </summary>
@@ -70,7 +102,8 @@ public class TowerBase : UnitBase {
     public void ChangeSpellSize(float value) {
         if(SpellSize + value > 0.1f) {
             SpellSize += value;
-        } else {
+        }
+        else {
             SpellSize = 0.1f;
         }
     }
