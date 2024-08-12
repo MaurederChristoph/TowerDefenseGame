@@ -7,8 +7,6 @@ public class ScriptableUnit : ScriptableObject {
     [Tooltip("The unit that will be instantiated")]
     [field: SerializeField] public UnitBase UnitPrefab { get; private set; }
     [Tooltip("The starting stats of the Tower")]
-    [field: SerializeField] public Stats Stats { get; private set; }
-    [Tooltip("The Starting health of an unit")]
     [field: SerializeField] public int MaxHealth { get; private set; } = 100;
     [Tooltip("Represents the damage a unit will do")]
     [field: SerializeField] public int Power { get; private set; } = 5;

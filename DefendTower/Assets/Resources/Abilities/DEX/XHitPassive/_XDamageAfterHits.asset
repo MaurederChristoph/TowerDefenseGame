@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _XDamageAfterHits
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Targeted Precision
+  <Description>k__BackingField: After 5 attacks on the same target, the enemy takes
+    significantly increased damage from subsequent hits.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 8d826959263b8c246929a8518d636364, type: 2}

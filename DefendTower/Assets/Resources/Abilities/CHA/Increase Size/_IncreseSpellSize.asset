@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _IncreseSpellSize
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Grand Projection
+  <Description>k__BackingField: "The tower\u2019s spell doubles in size."
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 67dedf5eb7b492642ae67a3e4122d231, type: 2}

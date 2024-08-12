@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _ReviveOnDeath
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Enduring Resilience
+  <Description>k__BackingField: ' Instantly revives the tower if it falls but can
+    only be activated once every minute.'
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 66129c993c671d54fb19fbd56f78bc72, type: 2}

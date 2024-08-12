@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
-  m_Name: _DualCast
+  m_Name: _Stonks
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
-  <Effects>k__BackingField: []
+  <Name>k__BackingField: Phenomenal evil
+  <Description>k__BackingField: Each time the tower casts a spell, it gains +2 Intelligence
+  <Effects>k__BackingField:
+  - {fileID: 11400000, guid: 98b9a69494d155c49b05b1714a3274b1, type: 2}
+  - {fileID: 11400000, guid: 1fc47f4b78f631443b165c2f198649ba, type: 2}

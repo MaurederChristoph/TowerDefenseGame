@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _CastSpeedUp
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Insightful Surge
+  <Description>k__BackingField: "he tower\u2019s spell gains a boost in cast speed
+    casting 80% faster."
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 94a18d36dd628de47aa58cb06a854b61, type: 2}

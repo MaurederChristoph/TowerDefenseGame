@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _AOEonHit
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: AOE on hit
-  <Description>k__BackingField: 
-  <Stat>k__BackingField: 0
-  <TriggerOnStatHeight>k__BackingField: 5
+  <Name>k__BackingField: Thunderwave
+  <Description>k__BackingField: Each basic attack channels raw strength, erupting
+    on impact and sending shockwaves that devastate enemies in a wide area.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 0759fa54199a72b41a543fda6af1ba62, type: 2}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _SameTargetDamageBuff
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Accurate Overload
+  <Description>k__BackingField: Each consecutive hit on the same target increases
+    the damage of subsequent shots.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 45798866ecd4b0c4b87a6f14d8905a1b, type: 2}

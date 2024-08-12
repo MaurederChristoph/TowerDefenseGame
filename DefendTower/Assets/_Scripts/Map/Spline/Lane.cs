@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
 /// <summary>
@@ -40,7 +41,7 @@ public class Lane : MonoBehaviour {
     private void SpawnUnit() {
         var unit = _units.Dequeue();
         if(unit == null) { return; }
-        var unitInstance = Instantiate(unit.UnitPrefab);
+        var unitInstance = Instantiate(unit.UnitPrefab,new Vector3(-999,-999),quaternion.identity);
         unitInstance.InitUnit(unit);
         var unitSplineAnimator = unitInstance.GetComponent<SplineAnimate>();
         unitSplineAnimator.Duration = unit.Time;

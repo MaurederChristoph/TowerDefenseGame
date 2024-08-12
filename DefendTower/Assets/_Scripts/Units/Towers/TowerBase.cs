@@ -84,8 +84,9 @@ public class TowerBase : UnitBase {
     /// Translates tower properties form scriptable tower object to tower script
     /// </summary>
     /// <param name="unit">Scriptable unit</param>
-    public override void InitUnit(ScriptableUnit unit) {
+    override public void InitUnit(ScriptableUnit unit) {
         base.InitUnit(unit);
+        GetComponent<CircleCollider2D>().radius = Range;
         var tower = (ScriptableTower)unit;
         SpellProjectile = tower.SpellProjectile;
         SpellTargetingStrategy = TargetingStrategy.FromType(tower.SpellTargetingStrategy);

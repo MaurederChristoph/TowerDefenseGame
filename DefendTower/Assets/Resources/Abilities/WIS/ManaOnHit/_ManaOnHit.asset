@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _ManaOnHit
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: "Sage\u2019s Restoration"
+  <Description>k__BackingField: Basic attacks restore some mana.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 8e4067e45ab295d408a8f7e5cb4f9f0e, type: 2}

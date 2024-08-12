@@ -18,6 +18,6 @@ public class DamageAfterXHitsAmount : ScriptableAbilityEffect {
         var healthChange = projectile.Effects.FirstOrDefault(e => e is ChangeHealth) as ChangeHealth;
         if(healthChange == null) { return; }
         var value = CalculateHealthChange(Mathf.RoundToInt(Damage.GetIntValue(origin)), healthChange.HealthChangeType);
-        target.ChangeHealth(value);
+        target.ChangeHealth(value, origin);
     }
 }

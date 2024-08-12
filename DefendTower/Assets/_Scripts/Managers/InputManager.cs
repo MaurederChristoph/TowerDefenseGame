@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour {
     private GridPosInfo _currentHoveredTileInfo;
     private bool _placingTower = false;
 
+    public UnitBase SelectedTower { get; private set; }
+
     private Vector3 MousePos => Input.mousePosition;
     private void Start() {
         _gameManager = GameManager.Instance;

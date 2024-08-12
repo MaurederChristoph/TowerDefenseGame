@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _StackingAttackspeed
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Focused Assault
+  <Description>k__BackingField: Attacking the same target repeatedly grants an attack
+    speed bonus, increasing the tower's rate of fire with each successive hit.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 04d2189e0f5a27049b5bfc963b776b38, type: 2}

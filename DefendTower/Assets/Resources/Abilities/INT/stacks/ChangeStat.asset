@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da6dabbb03fd4fc4bf3587b6af7b07b7, type: 3}
-  m_Name: Change Mana
+  m_Script: {fileID: 11500000, guid: 5e9cb3fad86f47cfb2f8bebb3ae59bf7, type: 3}
+  m_Name: ChangeStat
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 4
+  <CallType>k__BackingField: 12
   <TargetingType>k__BackingField: 1
-  <ManaGain>k__BackingField:
+  <StatChange>k__BackingField:
     _stat: 6
-    _value: 10
+    _value: 2
+  <Strategy>k__BackingField: 0
+  <Time>k__BackingField: -1

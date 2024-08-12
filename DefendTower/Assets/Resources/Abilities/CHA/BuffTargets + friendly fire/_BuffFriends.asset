@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _BuffFriends
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Allied Amplification
+  <Description>k__BackingField: The tower's spell grants a BUFF to target allies
+    for 15 seconds. The spell still deals damage.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: d609205c09925f347a78e95d148ec2fe, type: 2}
   - {fileID: 11400000, guid: 23483850794575245b34c71e16d03fde, type: 2}

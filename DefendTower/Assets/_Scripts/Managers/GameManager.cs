@@ -38,6 +38,11 @@ public class GameManager : Singleton<GameManager> {
     [field: SerializeField] public HighlightManager HighlightManager { get; private set; }
 
     /// <summary>
+    /// Reference to the current instance of the abiltiy selection Manager
+    /// </summary>
+    [field: SerializeField] public AbilitySelectionManager AbilitySelectionManager { get; private set; }
+    
+    /// <summary>
     /// Reference to the current instance of the Shooting Behavior
     /// </summary>
     [field: SerializeField] public ShootingBehavior ShootingBehavior { get; private set; }

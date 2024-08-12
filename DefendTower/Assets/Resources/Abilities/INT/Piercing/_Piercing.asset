@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _Piercing
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Endless Penetration
+  <Description>k__BackingField: "The tower\u2019s spell pierces through an unlimited
+    number of targets"
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 45e2dcc4969b3a44fafef89cef2b8191, type: 2}

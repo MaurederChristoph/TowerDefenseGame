@@ -18,7 +18,7 @@ public class Dot : ScriptableAbilityEffect {
 
         void DotDamage(string _ = "") {
             if(ticks > TotalTicks) return;
-            origin.ChangeHealth(Damage.GetIntValue(origin));
+            origin.ChangeHealth(Damage.GetIntValue(origin),origin);
             ticks++;
             delayedActionHandler.CallAfterSeconds(DotDamage, Delay);
         }

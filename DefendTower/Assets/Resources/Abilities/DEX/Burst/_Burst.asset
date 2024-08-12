@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _Burst
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Burst
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Swift Barrage
+  <Description>k__BackingField: Now fires a burst of 5 rapid shots
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: f4efc9b282aa25d4ab4037068721556f, type: 2}

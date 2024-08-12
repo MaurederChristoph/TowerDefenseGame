@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _Taunt
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Taunt
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Threatening Presence
+  <Description>k__BackingField: Taunts enemies to attack the tower when they come
+    within range, redirecting their attacks to the tower.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 3a3862ca19b41864da29c55c758887b0, type: 2}

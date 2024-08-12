@@ -16,10 +16,10 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 1
   <Amount>k__BackingField:
     _stat: 6
-    _value: 5
+    _value: 4
   <ReloadMultiplier>k__BackingField:
     _stat: 6
-    _value: 2
+    _value: 5
   <InBetweenShotMultiplier>k__BackingField:
     _stat: 6
-    _value: 0.4
+    _value: -0.6

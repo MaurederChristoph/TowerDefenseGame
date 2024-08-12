@@ -43,11 +43,11 @@ MonoBehaviour:
   - AbilityLevel: 5
     Abilities:
     - {fileID: 11400000, guid: 7aab4665accf635478e66c41bb204e9f, type: 2}
-    - {fileID: 11400000, guid: 389c297255c1e3942afadac7ad655a90, type: 2}
+    - {fileID: 11400000, guid: 5a9263f4693c39947ae1ae77e8efdb95, type: 2}
   - AbilityLevel: 10
     Abilities:
     - {fileID: 11400000, guid: 3e44ca8e67e58894f9ce34d87e1b7fc6, type: 2}
-    - {fileID: 11400000, guid: 915e032c585be6d44a990520e3e281f5, type: 2}
+    - {fileID: 11400000, guid: 389c297255c1e3942afadac7ad655a90, type: 2}
   Wis:
   - AbilityLevel: 5
     Abilities:
@@ -55,7 +55,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 999862001b9d8d24e9f82ebbaf85ebd5, type: 2}
   - AbilityLevel: 10
     Abilities:
-    - {fileID: 11400000, guid: 072f68f8325731b43920a5bdf44701de, type: 2}
+    - {fileID: 11400000, guid: 915e032c585be6d44a990520e3e281f5, type: 2}
     - {fileID: 11400000, guid: 4fda425f633d2dc42b41eaf9778d60c3, type: 2}
   Int:
   - AbilityLevel: 5
@@ -64,5 +64,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 029e9d52aa586c64ba91799e94b7e092, type: 2}
   - AbilityLevel: 10
     Abilities:
-    - {fileID: 11400000, guid: 5a9263f4693c39947ae1ae77e8efdb95, type: 2}
+    - {fileID: 11400000, guid: 6b3bb2057fff7d14d80b5721663567dc, type: 2}
     - {fileID: 11400000, guid: 646ff8ef46636b34eb80295943b6a38a, type: 2}

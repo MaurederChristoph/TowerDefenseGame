@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _DOT
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Cerebral Decay
+  <Description>k__BackingField: "The tower\u2019s spell applies a damage-over-time
+    effect to targets"
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 1db7002b068c43842858e66f2711835a, type: 2}

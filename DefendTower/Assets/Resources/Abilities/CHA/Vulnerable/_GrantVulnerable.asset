@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _GrantVulnerable
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Charismatic Weakening
+  <Description>k__BackingField: The tower's spell grants Vulnerable to target enemies
+    for 15 seconds, increasing the damage they take
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 82058edf144cb1d42b76b69341e6e069, type: 2}

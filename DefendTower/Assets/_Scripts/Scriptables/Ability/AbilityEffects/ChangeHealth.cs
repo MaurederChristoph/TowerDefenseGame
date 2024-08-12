@@ -13,6 +13,6 @@ public class ChangeHealth : ScriptableAbilityEffect {
     public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
         var t = HealthChange.GetIntValue(origin);
         var value = CalculateHealthChange(t, HealthChangeType);
-        target.ChangeHealth(value + projectile.DamageBonus);
+        target.ChangeHealth(value + projectile.DamageBonus, origin);
     }
 }
