@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab11a54876043f2843460f47b163d46, type: 3}
   m_Name: Consecutive Hit Damage Increase
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 2
-  <TargetingType>k__BackingField: 0
+  <CallType>k__BackingField: 3
+  <TargetingType>k__BackingField: 1
   <Damage>k__BackingField:
     _stat: 6
     _value: 1

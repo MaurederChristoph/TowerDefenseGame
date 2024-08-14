@@ -11,7 +11,7 @@ public class UnitBase : MonoBehaviour {
 	/// <summary>
 	/// The point form where the unit shoots
 	/// </summary>
-	[SerializeField] private Transform shootingPoint;
+	[SerializeField] protected Transform shootingPoint;
 
 	/// <summary>
 	/// Triggered when the health changes 
@@ -32,6 +32,8 @@ public class UnitBase : MonoBehaviour {
 
 	private Action<UnitBase> _onDeath;
 
+	private Action<UnitBase> _onNewTarget;
+
 	private List<ScriptableAbilityEffect> OnEnemyLeaveRangeEffect { get; set; } = new();
 	private List<ScriptableAbilityEffect> OnEnemyEnterRangeEffect { get; set; } = new();
 	private List<ScriptableAbilityEffect> OnGettingHitEffect { get; set; } = new();
@@ -47,15 +49,7 @@ public class UnitBase : MonoBehaviour {
 	/// <summary>
 	/// The Starting health of a unit
 	/// </summary>
-	private int _maxHealth;
-
-	/// <summary>
-	/// The Starting health of a unit
-	/// </summary>
-	public int MaxHealth {
-		get => _maxHealth + (int)StatChanges.GetStatChange(Stats, StatType.Con);
-		private set => _maxHealth = value;
-	}
+	public int MaxHealth { get; private set; }
 
 	/// <summary>
 	/// Represents the damage a unit will do
@@ -79,7 +73,7 @@ public class UnitBase : MonoBehaviour {
 	/// Calculated Attack Speed with AttackSpeedMultiplier 
 	/// </summary>
 	public float TotalAttackSpeed {
-		get => _attackSpeed * AttackSpeedMultiplier + StatChanges.GetStatChange(Stats, StatType.Dex);
+		get => (_attackSpeed + StatChanges.GetStatChange(Stats, StatType.Dex)) * AttackSpeedMultiplier;
 		private set => _attackSpeed = value;
 	}
 
@@ -141,12 +135,12 @@ public class UnitBase : MonoBehaviour {
 	/// <summary>
 	/// Reference to the current instance of the <see cref="UnitManager"/>
 	/// </summary>
-	private UnitManager _unitManager;
+	protected UnitManager _unitManager;
 
 	/// <summary>
 	/// The current instance of the <see cref="DelayedActionHandler"/>
 	/// </summary>
-	private DelayedActionHandler _delayedActionHandler;
+	protected DelayedActionHandler _delayedActionHandler;
 
 	/// <summary>
 	/// The current instance of the <see cref="ShootingBehavior"/>
@@ -204,6 +198,9 @@ public class UnitBase : MonoBehaviour {
 
 	private int _power;
 
+	private InfoBar _infoBar;
+
+	private bool _isShooting = false;
 	private void Awake() {
 		_gameManager = GameManager.Instance;
 		_unitManager = _gameManager.UnitManager;
@@ -217,15 +214,28 @@ public class UnitBase : MonoBehaviour {
 	/// Translates unit properties form scriptable unit object to unit script
 	/// </summary>
 	/// <param name="unit">Scriptable unit</param>
-	public virtual void InitUnit(ScriptableUnit unit) {
-		Stats = new Stats();
-		MaxHealth = unit.MaxHealth;
-		CurrentHealth = MaxHealth;
+	/// <param name="stats">The starting stats of the unit</param>
+	public virtual void InitUnit(ScriptableUnit unit, Stats stats = null) {
+		if (stats == null) {
+			Stats = new Stats();
+			Stats.InitStats();
+		} else {
+			Stats = stats;
+		}
+		Stats.InitStats();
+		_scriptableUnit = unit;
+		var conBonus = (int)StatChanges.GetStatChange(Stats, StatType.Con);
+		CurrentHealth = unit.MaxHealth + conBonus;
+		MaxHealth = unit.MaxHealth + conBonus;
+		_infoBar = GetComponents<InfoBar>().First(b => b.BarType == BarType.HeathBar);
+		_infoBar.UpdateMaxValue(MaxHealth, CurrentHealth);
+		Stats.Con.AddStatChangeListener(UpdateMaxHeath);
 		Power = unit.Power;
 		TotalAttackSpeed = unit.AttackSpeed;
 		Range = unit.Range;
 		AttackTargetFaction = unit.AttackTargets;
 		AttackTargetingStrategy = TargetingStrategy.FromType(unit.AttackTargetingStrategy);
+		_savedTargetingStrategy = AttackTargetingStrategy;
 		BaseProjectile = new ProjectileInfo(unit.Projectile, this);
 		DistributeEffects(unit.Projectile.Effects);
 		Faction = unit.Faction;
@@ -234,7 +244,7 @@ public class UnitBase : MonoBehaviour {
 		BurstReloadMultiplier = unit.BurstReloadMultiplier;
 		CreationTime = Time.time;
 		_speedChangeTimes = 0;
-		CheckForShooting();
+		StartBasicAttackShooting();
 	}
 
 
@@ -247,10 +257,12 @@ public class UnitBase : MonoBehaviour {
 		if (_vulnerableAmount > 0) {
 			healthChange = Mathf.FloorToInt(healthChange * 1.5f);
 		}
+		Debug.Log(healthChange);
 		if (origin != this) {
 			EffectCaster.CastEffect(OnGettingHitEffect, BaseProjectile, this, origin);
 		}
 		CurrentHealth += healthChange;
+		_infoBar.UpdateCurrentValue(CurrentHealth);
 		if (CurrentHealth <= 0 && this != null) {
 			TryDestroy();
 		}
@@ -260,6 +272,7 @@ public class UnitBase : MonoBehaviour {
 	private void TryDestroy() {
 		EffectCaster.CastEffect(OnDeathEffect, BaseProjectile, this, this);
 		if (CurrentHealth <= 0 && this != null) {
+			_onDeath?.Invoke(this);
 			Destroy(gameObject);
 		}
 	}
@@ -273,6 +286,7 @@ public class UnitBase : MonoBehaviour {
 		if (newTarget != AttackTarget) {
 			AttackTarget = newTarget;
 			_attacksAgainstTarget = 1;
+			_onNewTarget?.Invoke(AttackTarget);
 		} else {
 			_attacksAgainstTarget++;
 		}
@@ -293,9 +307,20 @@ public class UnitBase : MonoBehaviour {
 	/// <summary>
 	/// Reset the unit 
 	/// </summary>
-	public void ResetUnit() {
+	public virtual void ResetUnit() {
+		Stats.Con.RemoveStatChangeListener(UpdateMaxHeath);
+		StopBasicAttackShooting();
+		InitUnit(_scriptableUnit, Stats);
+	}
+	protected void StopBasicAttackShooting() {
+		_isShooting = false;
 		_delayedActionHandler.StopDelayedAction(_currentShootingKey);
-		InitUnit(_scriptableUnit);
+	}
+
+	protected void StartBasicAttackShooting(string _ = "") {
+		if (_isShooting) return;
+		_isShooting = true;
+		CheckForShooting();
 	}
 
 	/// <summary>
@@ -387,26 +412,6 @@ public class UnitBase : MonoBehaviour {
 		AttackTarget = target;
 	}
 
-	/// <summary>
-	/// Change the targets speed to be slowed
-	/// </summary>
-	public void ApplySpeedPenalty() {
-		if (this is not EnemyBase enemy) {
-			return;
-		}
-		_speedChangeTimes++;
-		enemy.ChangeSpeedPenalty();
-	}
-
-
-	/// <summary>
-	/// Resets the speed to the original speed
-	/// </summary>
-	public void ResetSpeed() {
-		if (this is EnemyBase enemy && _speedChangeTimes == 0) {
-			enemy.ChangeSpeedPenalty();
-		}
-	}
 	public void DistributeEffects(List<ScriptableAbilityEffect> projectileEffects, UnitBase origin = null) {
 		foreach(var effect in projectileEffects) {
 			DistributeEffect(effect, origin);
@@ -471,6 +476,12 @@ public class UnitBase : MonoBehaviour {
 		}
 	}
 
+	private void UpdateMaxHeath(int value) {
+		var hpChange = (int)ResourceSystem.Instance.GetScriptableStatChanges().Con.Amount * value;
+		MaxHealth += hpChange;
+		CurrentHealth += hpChange;
+		_infoBar.UpdateMaxValue(MaxHealth, CurrentHealth);
+	}
 
 	#region Event Handlers
 
@@ -541,12 +552,17 @@ public class UnitBase : MonoBehaviour {
 	public void AddOnEnemyDeathEffect(ScriptableAbilityEffect effect) {
 		OnEnemyDeathEffect.Add(effect);
 	}
-
 	public void AddOnDeathListener(Action<UnitBase> listener) {
 		_onDeath += listener;
 	}
 	public void RemoveOnDeathListener(Action<UnitBase> listener) {
 		_onDeath -= listener;
+	}
+	public void AddNewTargetListener(Action<UnitBase> listener) {
+		_onNewTarget += listener;
+	}
+	public void RemoveNewTargetListener(Action<UnitBase> listener) {
+		_onNewTarget -= listener;
 	}
 
 	#endregion
@@ -565,21 +581,24 @@ public class UnitBase : MonoBehaviour {
 			_targetList.Remove(target);
 			EffectCaster.CastEffect(OnEnemyLeaveRangeEffect, BaseProjectile, this, target);
 		}
-		_onDeath?.Invoke(this);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		var target = other.GetComponent<UnitBase>();
+		if (target == null) return;
 		target.AddOnDeathListener(HandleUnitDeath);
 		if (!other.CompareTag(AttackTargetFaction.ToString())) return;
 		_targetList.Add(target);
+		_onEnemyEntersRange?.Invoke(target);
 		EffectCaster.CastEffect(OnEnemyEnterRangeEffect, BaseProjectile, this, target);
 	}
 	private void OnTriggerExit2D(Collider2D other) {
 		var target = other.GetComponent<UnitBase>();
+		if (target == null) return;
 		target.RemoveOnDeathListener(HandleUnitDeath);
 		if (!other.CompareTag(AttackTargetFaction.ToString())) return;
 		_targetList.Remove(target);
+		_onEnemyLeavesRange?.Invoke(target);
 		EffectCaster.CastEffect(OnEnemyLeaveRangeEffect, BaseProjectile, this, target);
 	}
 

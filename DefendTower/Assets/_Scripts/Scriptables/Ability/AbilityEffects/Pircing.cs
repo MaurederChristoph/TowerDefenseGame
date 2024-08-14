@@ -9,6 +9,6 @@ public class Piercing : ScriptableAbilityEffect {
     [field: SerializeField] public EffectAmount PircingAmount { get; private set; }
     public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
         var value = PircingAmount.GetIntValue(origin);
-        projectile.PiercingTargets =+ value;
+        projectile.PiercingAmount =+ value;
     }
 }

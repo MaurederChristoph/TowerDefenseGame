@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f9aea28de84e31a9ff18c093a7bc6e, type: 3}
   m_Name: Health Modifier
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 1
+  <CallType>k__BackingField: 3
   <TargetingType>k__BackingField: 0
   <HealthChangeMultiplier>k__BackingField:
     _stat: 6
-    _value: 1.5
+    _value: 2
   <ModifierType>k__BackingField: 1
   <Percentage>k__BackingField: 90

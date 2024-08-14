@@ -9,5 +9,12 @@ public class ChangeAttackSpeedMultiplier : ScriptableAbilityEffect {
     [field: SerializeField] public EffectAmount AttackSpeedChange { get; private set; }
     public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
         target.ChangeAttackSpeedMultiplier(AttackSpeedChange.GetFloatValue(origin));
+        target.AddNewTargetListener(ResetAttackSpeed);
+        return;
+        
+        void ResetAttackSpeed(UnitBase unit) {
+            target.RemoveNewTargetListener(ResetAttackSpeed);
+            target.ChangeAttackSpeedMultiplier(-AttackSpeedChange.GetFloatValue(origin));
+        }
     }
 }

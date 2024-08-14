@@ -7066,6 +7066,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2282226296986469777, guid: d40c29d48b24eae42a89ce9bbd1675b1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1070.5883
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282226296986469777, guid: d40c29d48b24eae42a89ce9bbd1675b1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1023.5294
+      objectReference: {fileID: 0}
     - target: {fileID: 5180501195656322743, guid: d40c29d48b24eae42a89ce9bbd1675b1, type: 3}
       propertyPath: m_Name
       value: Ability Selection
@@ -7106,6 +7114,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6613200549608000440, guid: d40c29d48b24eae42a89ce9bbd1675b1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1355606179, guid: 521093e845abaf94088dc40f9b706b22, type: 3}
     - target: {fileID: 7404944283508763905, guid: d40c29d48b24eae42a89ce9bbd1675b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

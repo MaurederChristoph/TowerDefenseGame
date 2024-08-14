@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54200fe0ac64eb49bb0ae63ed7ea9d3, type: 3}
   m_Name: Vulnerable
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 1
+  <CallType>k__BackingField: 13
   <TargetingType>k__BackingField: 0
-  <Duration>k__BackingField: 10
+  <Duration>k__BackingField: 999999

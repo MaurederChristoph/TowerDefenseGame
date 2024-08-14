@@ -13,7 +13,23 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -122680390759193115, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_Method
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -122680390759193115, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_Duration
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: -122680390759193115, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
       propertyPath: m_LoopMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474850574339225, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474850574339225, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 692764661664542679, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
@@ -64,21 +80,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3501548449231420094, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: <BarType>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5269128629514386306, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
       propertyPath: m_Size.x
-      value: 0.2
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5269128629514386306, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
       propertyPath: m_Size.y
-      value: 0.2
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5269128629514386306, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -1273509070, guid: a74c3a1a991f710438f56a76c60952f7, type: 3}
     - target: {fileID: 5269128629514386306, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911892880740965712, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -338
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719339200498918696, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719339200498918696, guid: c66b8c5e65276854a81321c09bf10a86, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0566
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

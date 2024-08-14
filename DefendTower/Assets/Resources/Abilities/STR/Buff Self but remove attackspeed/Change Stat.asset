@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9cb3fad86f47cfb2f8bebb3ae59bf7, type: 3}
   m_Name: Change Stat
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 4
-  <TargetingType>k__BackingField: 0
+  <CallType>k__BackingField: 6
+  <TargetingType>k__BackingField: 1
   <StatChange>k__BackingField:
     _stat: 6
-    _value: 5
+    _value: 2
   <Strategy>k__BackingField: 0
   <Time>k__BackingField: 5

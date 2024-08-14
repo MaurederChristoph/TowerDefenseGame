@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330faa62ee304be4beeb0150cc4009e3, type: 3}
   m_Name: Taunt
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 8
+  <CallType>k__BackingField: 10
   <TargetingType>k__BackingField: 0

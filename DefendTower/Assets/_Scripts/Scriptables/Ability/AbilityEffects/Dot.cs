@@ -11,6 +11,7 @@ public class Dot : ScriptableAbilityEffect {
     [Tooltip("How many ticks of damage there are")]
     [field: SerializeField] public int TotalTicks { get; private set; } = 3;
     public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
+        var newTarget = target;
         var ticks = 0;
         var delayedActionHandler = GameManager.Instance.DelayedActionHandler;
         DotDamage();
@@ -18,7 +19,7 @@ public class Dot : ScriptableAbilityEffect {
 
         void DotDamage(string _ = "") {
             if(ticks > TotalTicks) return;
-            origin.ChangeHealth(Damage.GetIntValue(origin),origin);
+            newTarget.ChangeHealth(Damage.GetIntValue(origin),origin);
             ticks++;
             delayedActionHandler.CallAfterSeconds(DotDamage, Delay);
         }

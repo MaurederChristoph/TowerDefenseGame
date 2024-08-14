@@ -29,5 +29,4 @@ public class ScriptableUnit : ScriptableObject {
     [field: SerializeField] public float BurstInBetweenShotsMultiplier { get; private set; }
     [Tooltip("Multiplies the Attack speed after the burst is over")]
     [field: SerializeField] public float BurstReloadMultiplier { get; private set; }
-
 }

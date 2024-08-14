@@ -9,12 +9,12 @@ public class ConsecutiveHitDamageIncrease : ScriptableAbilityEffect {
     [field: SerializeField] public EffectAmount Damage { get; private set; }
     public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
         projectile.DamageBonus += Damage.GetIntValue(origin);
-        projectile.AddNewTargetListener(RemoveDamageBonus);
+        origin.AddNewTargetListener(RemoveDamageBonus);
         return;
 
-        void RemoveDamageBonus() {
+        void RemoveDamageBonus(UnitBase unit) {
             projectile.DamageBonus -= Damage.GetIntValue(origin);
-            projectile.RemoveNewTargetListener(RemoveDamageBonus);
+            origin.RemoveNewTargetListener(RemoveDamageBonus);
         }
     }
 }

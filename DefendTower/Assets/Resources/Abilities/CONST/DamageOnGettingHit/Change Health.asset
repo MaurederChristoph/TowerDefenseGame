@@ -15,6 +15,6 @@ MonoBehaviour:
   <CallType>k__BackingField: 9
   <TargetingType>k__BackingField: 0
   <HealthChange>k__BackingField:
-    _stat: 6
-    _value: 5
+    _stat: 2
+    _value: 2
   <HealthChangeType>k__BackingField: 0

@@ -6,7 +6,6 @@ public class LevelUp : MonoBehaviour {
 	[SerializeField] private GameObject _levelUpBanner;
 
 	public void IncreaseStat(string stat) {
-		Debug.Log("yes");
 		if (!Enum.TryParse(stat, out StatType statType)) return;
 		var statValue = 0;
 		switch(statType) {

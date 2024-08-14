@@ -44,7 +44,7 @@ public class Lane : MonoBehaviour {
         var unitInstance = Instantiate(unit.UnitPrefab,new Vector3(-999,-999),quaternion.identity);
         unitInstance.InitUnit(unit);
         var unitSplineAnimator = unitInstance.GetComponent<SplineAnimate>();
-        unitSplineAnimator.Duration = unit.Time;
+        unitSplineAnimator.Duration = unit.Speed;
         unitSplineAnimator.Container = GetComponent<SplineContainer>();
         _onEnemySpawn?.Invoke((EnemyBase)unitInstance);
     }

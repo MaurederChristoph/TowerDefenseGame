@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf27534ba5d4528850048fd778fd6af, type: 3}
   m_Name: Multicast
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 0
+  <CallType>k__BackingField: 15
   <TargetingType>k__BackingField: 1
   <CastAmount>k__BackingField:
     _stat: 6

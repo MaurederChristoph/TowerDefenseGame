@@ -25,6 +25,9 @@ public class Stat {
 	/// List of the current stat modifications
 	/// </summary>
 	private readonly Dictionary<string, int> _tempStatModifiers = new();
+	public Stat(StatType statType) {
+		StatType = statType;
+	}
 
 	/// <summary>
 	/// Provides a copy of the current stat modifications
@@ -32,7 +35,7 @@ public class Stat {
 	public List<int> TempStats => _tempStatModifiers.Values.ToList();
 
 	public StatType StatType { get; private set; }
-	
+
 	public void Init() {
 		BaseStat = 0;
 	}
@@ -47,23 +50,24 @@ public class Stat {
 			_tempStatModifiers.Add(key, value);
 		} else {
 			BaseStat += value;
-			Debug.Log(BaseStat);
 		}
-		_onStatChange?.Invoke(Value);
+		_onStatChange?.Invoke(value);
 	}
 	/// <summary>
 	/// Removes a temporary stat change
 	/// </summary>
 	/// <param name="key">The key of the stat change</param>
 	private void RemoveTempStatChange(string key) {
+		var oldValues = Value;
 		_tempStatModifiers.Remove(key);
-		_onStatChange?.Invoke(Value);
+		_onStatChange?.Invoke(oldValues - Value);
 	}
 
 	/// <summary>
 	/// Adds a method to an event that is called when the stat changes
 	/// </summary>
 	/// <param name="listener">The method that will be called</param>
+	/// <param name="int">The amount by which the stat has been changed</param>>
 	public void AddStatChangeListener(Action<int> listener) {
 		_onStatChange += listener;
 	}

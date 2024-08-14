@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _FullLifeBonusDamage
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Savage Strike
-  <Description>k__BackingField: The tower's attacks deal 1.5x damage to enemies at
+  <Description>k__BackingField: The tower's attacks deal 2x damage to enemies at
     or above 90% health.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 4913baf486aca754db10fa7ba61d6283, type: 2}

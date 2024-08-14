@@ -16,6 +16,6 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 0
   <StatChange>k__BackingField:
     _stat: 6
-    _value: 3
+    _value: 5
   <Strategy>k__BackingField: 0
-  <Time>k__BackingField: 15
+  <Time>k__BackingField: 10

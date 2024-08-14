@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1f1be67a0a64e44fb9f46f693cdfeef
+guid: 521093e845abaf94088dc40f9b706b22
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1f6097ff9f698148818f6791a28fa15
-      internalID: 793502408
+      spriteID: 9643790040076dd4fae4f60eed891d9f
+      internalID: -1610651436
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2306f3a62cfe2954cb73a72e31aa8158
-      internalID: -2133053673
+      spriteID: 5fac072d5b8ac284eb1099354afa3d26
+      internalID: 1333975014
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 310489d7e6f86314b827d0023832ca24
-      internalID: -435252875
+      spriteID: e8c122d46fe675f44a1e59ae5b39d0c0
+      internalID: -1346925919
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87e8a2cb8d529d1429bb4222d47ddec2
-      internalID: 843586407
+      spriteID: 3d9b07faaa0680c4c92abc81b436bcbe
+      internalID: -1153429654
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 268
-        y: 194
-        width: 48
-        height: 18
+        y: 126
+        width: 13
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9794acd2376b10342ab6336ccd75e355
-      internalID: -1330209392
+      spriteID: dd19de7dd47a4f146add8cf9779e394b
+      internalID: -1004037459
       vertices: []
       indices: 
       edges: []
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9b659ba47aeead418410e88acaba7a0
-      internalID: 1120240568
+      spriteID: ddea8596e8cb8774cb0ab25141b38496
+      internalID: 1189509919
       vertices: []
       indices: 
       edges: []
@@ -237,8 +237,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99e4c9475a4368a43a43c55fc2b73559
-      internalID: -230816949
+      spriteID: f9f9a79c7883b7c438b3e70660bde61b
+      internalID: -1355606179
       vertices: []
       indices: 
       edges: []
@@ -247,8 +247,29 @@ TextureImporter:
       name: UI_7
       rect:
         serializedVersion: 2
-        x: 269
-        y: 179
+        x: 249
+        y: 102
+        width: 48
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0e5d14cad631b4396b8d99d776f331
+      internalID: 1486313956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_8
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 87
         width: 70
         height: 11
       alignment: 0
@@ -258,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85d9f7d439c3c9740bc86f583e8ef738
-      internalID: 1146431024
+      spriteID: 486eeab19eae0fa46b3dc06424006b61
+      internalID: -1505758079
       vertices: []
       indices: 
       edges: []
@@ -275,14 +296,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_0: 793502408
-      UI_1: -2133053673
-      UI_2: -435252875
-      UI_3: 843586407
-      UI_4: -1330209392
-      UI_5: 1120240568
-      UI_6: -230816949
-      UI_7: 1146431024
+      UI_0: -1610651436
+      UI_1: 1333975014
+      UI_2: -1346925919
+      UI_3: -1153429654
+      UI_4: -1004037459
+      UI_5: 1189509919
+      UI_6: -1355606179
+      UI_7: 1486313956
+      UI_8: -1505758079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

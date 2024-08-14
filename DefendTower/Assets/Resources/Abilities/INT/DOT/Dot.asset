@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a776279ffa054604a4ab7e869b8628bf, type: 3}
   m_Name: Dot
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 1
-  <TargetingType>k__BackingField: 1
+  <CallType>k__BackingField: 14
+  <TargetingType>k__BackingField: 0
   <Damage>k__BackingField:
     _stat: 6
-    _value: 5
+    _value: -10
   <Delay>k__BackingField: 0.5
-  <TotalTicks>k__BackingField: 6
+  <TotalTicks>k__BackingField: 10

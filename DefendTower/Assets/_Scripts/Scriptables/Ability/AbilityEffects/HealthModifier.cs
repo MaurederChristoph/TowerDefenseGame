@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -17,23 +18,30 @@ public class HealthModifier : ScriptableAbilityEffect {
 
 
 	public override void ApplyEffect(ProjectileInfo projectile, UnitBase origin, UnitBase target) {
-		var healthChange = projectile.Effects.FirstOrDefault(e => e is ChangeHealth) as ChangeHealth;
+		IEnumerable<ScriptableAbilityEffect> healthChanges = projectile.Effects.Where(e => e is ChangeHealth);
+		ChangeHealth healthChange = null;
+		var value = 0;
+		foreach(var scriptableAbilityEffect in healthChanges) {
+			healthChange = (ChangeHealth)scriptableAbilityEffect;
+			value += CalculateHealthChange(healthChange.HealthChange.GetIntValue(origin), healthChange.HealthChangeType);
+		}
 		if (healthChange == null) { return; }
-		var loseHealth = healthChange.HealthChangeType == HealthEffectType.Damage ? -1 : 1;
-		var value = CalculateHealthChange(healthChange.HealthChange.GetIntValue(origin), healthChange.HealthChangeType);
 		switch(ModifierType) {
 			case HealthEffectModifier.Below:
-				if (target.CurrentHealth < target.MaxHealth * Percentage) {
-					target.ChangeHealth(Mathf.RoundToInt(value * HealthChangeMultiplier.GetFloatValue(origin) * loseHealth), origin);
+				if (target.CurrentHealth < target.MaxHealth * (Percentage / 100)) {
+					target.ChangeHealth(Mathf.RoundToInt(value * HealthChangeMultiplier.GetFloatValue(origin)),
+						origin);
 				}
 				break;
 			case HealthEffectModifier.Above:
-				if (target.CurrentHealth > target.MaxHealth * Percentage) {
-					target.ChangeHealth(Mathf.RoundToInt(value * HealthChangeMultiplier.GetFloatValue(origin) * loseHealth), origin);
+				if (target.CurrentHealth > target.MaxHealth * (Percentage / 100)) {
+					target.ChangeHealth(Mathf.RoundToInt(value * HealthChangeMultiplier.GetFloatValue(origin)),
+						origin);
 				}
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+
 	}
 }

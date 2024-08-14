@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf857425415401481c8cd5717016e55, type: 3}
   m_Name: Change Spell Size
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 0
+  <CallType>k__BackingField: 1
   <TargetingType>k__BackingField: 1
   <SpellSizeChange>k__BackingField:
     _stat: 6
-    _value: 3
+    _value: 2

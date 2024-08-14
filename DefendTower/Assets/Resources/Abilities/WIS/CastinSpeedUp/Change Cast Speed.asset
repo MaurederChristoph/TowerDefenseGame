@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446b4a1daad44587a1db2063c4281a99, type: 3}
   m_Name: Change Cast Speed
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 0
+  <CallType>k__BackingField: 1
   <TargetingType>k__BackingField: 1
   <CastSpeedMultiplier>k__BackingField:
     _stat: 6
-    _value: -0.8
+    _value: -1
