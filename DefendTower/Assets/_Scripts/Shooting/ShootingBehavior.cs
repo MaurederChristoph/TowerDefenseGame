@@ -38,6 +38,7 @@ public class ShootingBehavior : MonoBehaviour {
 	/// <param name="target">Target position</param>
 	/// <returns>Quaternion of the correct rotation between two points</returns>
 	private Quaternion GetAngle(Vector3 origin, Vector3 target) {
+		if (origin == target) return new Quaternion();
 		var rotation = Quaternion.LookRotation(target - origin, Vector3.up);
 		return new Quaternion(0, 0, rotation.z, rotation.w);
 	}

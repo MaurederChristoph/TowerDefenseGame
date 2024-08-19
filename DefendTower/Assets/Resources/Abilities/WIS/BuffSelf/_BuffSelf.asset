@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _BuffSelf
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Wise Empowerment
-  <Description>k__BackingField: ' The tower grants itself BUFF for 10 seconds upon
-    casting'
+  <Description>k__BackingField: When you cast a spell, temporarily increase your
+    highest stat by 3 for 2 seconds (stacks; no cooldown reset on buff).
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 304f558055215044798a9aecce402c57, type: 2}

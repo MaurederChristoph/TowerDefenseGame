@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _FullLifeBonusDamage
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Savage Strike
-  <Description>k__BackingField: The tower's attacks deal 2x damage to enemies at
-    or above 90% health.
+  <Name>k__BackingField: Overwhelming Force
+  <Description>k__BackingField: Deal 2.5 times damage to a target if it has more
+    than 75% HP.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 4913baf486aca754db10fa7ba61d6283, type: 2}

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60fcb776bbe5780448cb9e776eb34581, type: 3}
+  m_Name: _BatProjectile
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 2968959718325395893, guid: de3662b370e507b4d9a6bdd90392471e, type: 3}
+  <ShootingType>k__BackingField: 0
+  <Speed>k__BackingField: 20
+  <SpeedCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.38896877
+      outSlope: -0.38896877
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50124484
+      value: 0.8050314
+      inSlope: 0.00097082555
+      outSlope: 0.00097082555
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.39091042
+      outSlope: 0.39091042
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <PiercingTargets>k__BackingField: 0
+  <Effects>k__BackingField:
+  - {fileID: 11400000, guid: cfa006de4b84a954484839b5cd509951, type: 2}

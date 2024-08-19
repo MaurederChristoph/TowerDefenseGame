@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Str>k__BackingField:
     <StatType>k__BackingField: 0
-    <Amount>k__BackingField: 2
+    <Amount>k__BackingField: 27
   <Dex>k__BackingField:
     <StatType>k__BackingField: 1
-    <Amount>k__BackingField: 0.15
+    <Amount>k__BackingField: 0.17
   <Con>k__BackingField:
     <StatType>k__BackingField: 2
-    <Amount>k__BackingField: 100
+    <Amount>k__BackingField: 300
   <Int>k__BackingField:
     <StatType>k__BackingField: 3
-    <Amount>k__BackingField: 5
+    <Amount>k__BackingField: 75
   <Cha>k__BackingField:
     <StatType>k__BackingField: 4
-    <Amount>k__BackingField: 3
+    <Amount>k__BackingField: 2
   <Wis>k__BackingField:
     <StatType>k__BackingField: 5
-    <Amount>k__BackingField: 1
+    <Amount>k__BackingField: 2

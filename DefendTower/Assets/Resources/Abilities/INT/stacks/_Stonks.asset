@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: _Stonks
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Phenomenal evil
-  <Description>k__BackingField: Each time the tower casts a spell, it gains +2 Intelligence
+  <Description>k__BackingField: Immediately gain +1 to your highest stat, and each
+    time you cast a spell, gain an additional +1 to your highest stat.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 98b9a69494d155c49b05b1714a3274b1, type: 2}
   - {fileID: 11400000, guid: 1fc47f4b78f631443b165c2f198649ba, type: 2}

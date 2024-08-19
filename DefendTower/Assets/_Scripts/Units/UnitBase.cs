@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// Base class for all units
@@ -158,11 +159,6 @@ public class UnitBase : MonoBehaviour {
 	private int _vulnerableAmount = 0;
 
 	/// <summary>
-	/// How often the target it slowed
-	/// </summary>
-	private int _speedChangeTimes = 0;
-
-	/// <summary>
 	/// The time the unit was created
 	/// </summary>
 	public float CreationTime { get; private set; }
@@ -201,6 +197,7 @@ public class UnitBase : MonoBehaviour {
 	private InfoBar _infoBar;
 
 	private bool _isShooting = false;
+	private bool _canOverHeal = false;
 	private void Awake() {
 		_gameManager = GameManager.Instance;
 		_unitManager = _gameManager.UnitManager;
@@ -215,13 +212,8 @@ public class UnitBase : MonoBehaviour {
 	/// </summary>
 	/// <param name="unit">Scriptable unit</param>
 	/// <param name="stats">The starting stats of the unit</param>
-	public virtual void InitUnit(ScriptableUnit unit, Stats stats = null) {
-		if (stats == null) {
-			Stats = new Stats();
-			Stats.InitStats();
-		} else {
-			Stats = stats;
-		}
+	public virtual void InitUnit(ScriptableUnit unit) {
+		Stats = new Stats();
 		Stats.InitStats();
 		_scriptableUnit = unit;
 		var conBonus = (int)StatChanges.GetStatChange(Stats, StatType.Con);
@@ -229,8 +221,7 @@ public class UnitBase : MonoBehaviour {
 		MaxHealth = unit.MaxHealth + conBonus;
 		_infoBar = GetComponents<InfoBar>().First(b => b.BarType == BarType.HeathBar);
 		_infoBar.UpdateMaxValue(MaxHealth, CurrentHealth);
-		Stats.Con.AddStatChangeListener(UpdateMaxHeath);
-		Power = unit.Power;
+		Stats.Con.AddStatChangeListener(UpdateMaxHealth);
 		TotalAttackSpeed = unit.AttackSpeed;
 		Range = unit.Range;
 		AttackTargetFaction = unit.AttackTargets;
@@ -243,7 +234,6 @@ public class UnitBase : MonoBehaviour {
 		BurstInBetweenShotsMultiplier = unit.BurstInBetweenShotsMultiplier;
 		BurstReloadMultiplier = unit.BurstReloadMultiplier;
 		CreationTime = Time.time;
-		_speedChangeTimes = 0;
 		StartBasicAttackShooting();
 	}
 
@@ -253,15 +243,22 @@ public class UnitBase : MonoBehaviour {
 	/// </summary>
 	/// <param name="healthChange">The amount the health will be changed</param>
 	/// <param name="origin">The origin of the effect</param>
-	public virtual void ChangeHealth(int healthChange, UnitBase origin) {
+	public void ChangeHealth(int healthChange, UnitBase origin) {
 		if (_vulnerableAmount > 0) {
-			healthChange = Mathf.FloorToInt(healthChange * 1.5f);
+			healthChange = Mathf.FloorToInt(healthChange * 1.3f);
 		}
-		Debug.Log(healthChange);
 		if (origin != this) {
 			EffectCaster.CastEffect(OnGettingHitEffect, BaseProjectile, this, origin);
 		}
-		CurrentHealth += healthChange;
+		if (CurrentHealth + healthChange > MaxHealth && !_canOverHeal) {
+			CurrentHealth = MaxHealth;
+		} else {
+			CurrentHealth += healthChange;
+			if (CurrentHealth > MaxHealth) {
+				MaxHealth = CurrentHealth;
+				_infoBar.UpdateMaxValue(MaxHealth, CurrentHealth);
+			}
+		}
 		_infoBar.UpdateCurrentValue(CurrentHealth);
 		if (CurrentHealth <= 0 && this != null) {
 			TryDestroy();
@@ -303,15 +300,7 @@ public class UnitBase : MonoBehaviour {
 		}
 		_currentShootingKey = _delayedActionHandler.CallAfterSeconds(CheckForShooting, time);
 	}
-
-	/// <summary>
-	/// Reset the unit 
-	/// </summary>
-	public virtual void ResetUnit() {
-		Stats.Con.RemoveStatChangeListener(UpdateMaxHeath);
-		StopBasicAttackShooting();
-		InitUnit(_scriptableUnit, Stats);
-	}
+	
 	protected void StopBasicAttackShooting() {
 		_isShooting = false;
 		_delayedActionHandler.StopDelayedAction(_currentShootingKey);
@@ -476,7 +465,7 @@ public class UnitBase : MonoBehaviour {
 		}
 	}
 
-	private void UpdateMaxHeath(int value) {
+	private void UpdateMaxHealth(int value) {
 		var hpChange = (int)ResourceSystem.Instance.GetScriptableStatChanges().Con.Amount * value;
 		MaxHealth += hpChange;
 		CurrentHealth += hpChange;
@@ -484,7 +473,6 @@ public class UnitBase : MonoBehaviour {
 	}
 
 	#region Event Handlers
-
 	/// <summary>
 	/// Add method to be notified when the health units health changes
 	/// </summary>
@@ -583,7 +571,7 @@ public class UnitBase : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D other) {
+	protected virtual void OnTriggerEnter2D(Collider2D other) {
 		var target = other.GetComponent<UnitBase>();
 		if (target == null) return;
 		target.AddOnDeathListener(HandleUnitDeath);
@@ -592,7 +580,7 @@ public class UnitBase : MonoBehaviour {
 		_onEnemyEntersRange?.Invoke(target);
 		EffectCaster.CastEffect(OnEnemyEnterRangeEffect, BaseProjectile, this, target);
 	}
-	private void OnTriggerExit2D(Collider2D other) {
+	protected void OnTriggerExit2D(Collider2D other) {
 		var target = other.GetComponent<UnitBase>();
 		if (target == null) return;
 		target.RemoveOnDeathListener(HandleUnitDeath);
@@ -608,5 +596,8 @@ public class UnitBase : MonoBehaviour {
 		} else {
 			EffectCaster.CastEffect(OnTowerDeathEffect, BaseProjectile, this, unit);
 		}
+	}
+	public void RemoveHpCap() {
+		_canOverHeal = true;
 	}
 }

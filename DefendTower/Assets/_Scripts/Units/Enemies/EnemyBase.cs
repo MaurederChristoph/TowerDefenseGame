@@ -61,7 +61,7 @@ public class EnemyBase : UnitBase {
 	/// </summary>
 	/// <typeparam name="T">Type of scriptable unit</typeparam>
 	/// <param name="unit">Scriptable unit</param>
-	public override void InitUnit(ScriptableUnit unit, Stats stats = null) {
+	public override void InitUnit(ScriptableUnit unit) {
 		base.InitUnit(unit);
 		var enemy = (ScriptableEnemy)unit;
 		Speed = enemy.Speed * _speedPenalty;

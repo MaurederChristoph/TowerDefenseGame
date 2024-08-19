@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc770d3e40f1edd4080326beb61217e0, type: 3}
+  m_Name: Scriptable Combat Progression
+  m_EditorClassIdentifier: 
+  <CombatData>k__BackingField:
+  - <PowerLevel>k__BackingField: 1
+    <CombatStrength>k__BackingField: 10
+    <MinAmountOfNewUnit>k__BackingField: 10
+    <MaxAmountOfNewUnit>k__BackingField: 10
+    <OldUnitRange>k__BackingField: 0
+  - <PowerLevel>k__BackingField: 2
+    <CombatStrength>k__BackingField: 25
+    <MinAmountOfNewUnit>k__BackingField: 4
+    <MaxAmountOfNewUnit>k__BackingField: 7
+    <OldUnitRange>k__BackingField: 1
+  - <PowerLevel>k__BackingField: 3
+    <CombatStrength>k__BackingField: 40
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 2
+    <OldUnitRange>k__BackingField: 2
+  - <PowerLevel>k__BackingField: 4
+    <CombatStrength>k__BackingField: 110
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 6
+    <OldUnitRange>k__BackingField: 3
+  - <PowerLevel>k__BackingField: 5
+    <CombatStrength>k__BackingField: 190
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 4
+    <OldUnitRange>k__BackingField: 4
+  - <PowerLevel>k__BackingField: 6
+    <CombatStrength>k__BackingField: 250
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 2
+    <OldUnitRange>k__BackingField: 5
+  - <PowerLevel>k__BackingField: 7
+    <CombatStrength>k__BackingField: 450
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 3
+    <OldUnitRange>k__BackingField: 5
+  - <PowerLevel>k__BackingField: 8
+    <CombatStrength>k__BackingField: 700
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 4
+    <OldUnitRange>k__BackingField: 6
+  - <PowerLevel>k__BackingField: 9
+    <CombatStrength>k__BackingField: 800
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 3
+    <OldUnitRange>k__BackingField: 6
+  - <PowerLevel>k__BackingField: 10
+    <CombatStrength>k__BackingField: 2000
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 4
+    <OldUnitRange>k__BackingField: 6
+  - <PowerLevel>k__BackingField: 11
+    <CombatStrength>k__BackingField: 2400
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 2
+    <OldUnitRange>k__BackingField: 6
+  - <PowerLevel>k__BackingField: 12
+    <CombatStrength>k__BackingField: 3500
+    <MinAmountOfNewUnit>k__BackingField: 3
+    <MaxAmountOfNewUnit>k__BackingField: 4
+    <OldUnitRange>k__BackingField: 6
+  - <PowerLevel>k__BackingField: 13
+    <CombatStrength>k__BackingField: 7000
+    <MinAmountOfNewUnit>k__BackingField: 4
+    <MaxAmountOfNewUnit>k__BackingField: 5
+    <OldUnitRange>k__BackingField: 5
+  - <PowerLevel>k__BackingField: 14
+    <CombatStrength>k__BackingField: 10000
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 2
+    <OldUnitRange>k__BackingField: 5
+  - <PowerLevel>k__BackingField: 15
+    <CombatStrength>k__BackingField: 25000
+    <MinAmountOfNewUnit>k__BackingField: 2
+    <MaxAmountOfNewUnit>k__BackingField: 3
+    <OldUnitRange>k__BackingField: 5

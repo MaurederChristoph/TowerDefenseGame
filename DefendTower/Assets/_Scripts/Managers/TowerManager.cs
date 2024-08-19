@@ -24,11 +24,12 @@ public class TowerManager : MonoBehaviour {
     /// Instantiates a new tower 
     /// </summary>
     /// <param name="gridPos">The grid position of a tower</param>
-    public void SpawnTower(GridPosInfo gridPos) {
-        if(_towers.ContainsKey(gridPos.CurrentHoveredTile)) { return; }
+    public bool SpawnTower(GridPosInfo gridPos) {
+        if(_towers.ContainsKey(gridPos.CurrentHoveredTile)) { return false; }
         var tower = Instantiate(_scriptableTower.UnitPrefab, gridPos.CurrentHoveredTilePos, Quaternion.identity, _parent);
         _towers.Add(gridPos.CurrentHoveredTile, (TowerBase)tower);
         tower.InitUnit(_scriptableTower);
+        return true;
     }
     public void RemoveTower(TowerBase tower) {
         _towers.Remove(_towers.FirstOrDefault(t => t.Value == tower).Key);

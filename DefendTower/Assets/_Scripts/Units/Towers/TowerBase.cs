@@ -88,17 +88,25 @@ public class TowerBase : UnitBase {
 	/// </summary>
 	private InfoBar _manaBar;
 
+	public float HpReg {
+		get => (_hpReg + (int)(StatChanges.GetStatChange(Stats, StatType.Con) / 100) * _healthRegModifier);
+		private set => _hpReg = value;
+	}
+
 	private bool _isCurrentlyGainingMana = false;
 
 	private GameObject _bigSpellPrefab;
+
 	private GameObject _normalSpellPrefab;
-	
+
+	private float _healthRegModifier = 1;
+
 	/// <summary>
 	/// Translates tower properties form scriptable tower object to tower script
 	/// </summary>
 	/// <param name="unit">Scriptable unit</param>
-	public override void InitUnit(ScriptableUnit unit, Stats stats = null) {
-		base.InitUnit(unit, stats);
+	public override void InitUnit(ScriptableUnit unit) {
+		base.InitUnit(unit);
 		GetComponent<CircleCollider2D>().radius = Range;
 		var tower = (ScriptableTower)unit;
 		MaxMana = tower.MaxMana;
@@ -114,6 +122,8 @@ public class TowerBase : UnitBase {
 		SpellTargets = tower.SpellTargets;
 		_bigSpellPrefab = tower.BigSpellPrefab;
 		_normalSpellPrefab = SpellProjectileInfo.ProjectilePrefab;
+		HpReg = tower.HeathRegeneration;
+		PassiveRegeneration();
 		StartManaGain();
 	}
 
@@ -134,17 +144,21 @@ public class TowerBase : UnitBase {
 	/// Changes the faction the spell targets 
 	/// </summary>
 	/// <param name="targetFaction">The new faction the tower targets</param>
-	public void ChangeSpellTargeting(Faction targetFaction) {
+	/// <param name="targetingStrategyType">The new strategy type</param>
+	public void ChangeSpellTargeting(Faction targetFaction, TargetingStrategyType targetingStrategyType) {
 		SpellTargets = targetFaction;
+		SpellTargetingStrategy = TargetingStrategy.FromType(targetingStrategyType);
 	}
 
-	private bool _currentylCasting = false;
+	private bool _currentlyCasting = false;
+	private float _hpReg;
+	private readonly List<UnitBase> _towerInRange = new();
 	/// <summary>
 	/// Cast the current spell of the unit
 	/// </summary>
 	public void CheckSpellCast(bool secondCast = false) {
 		if (_unitManager.GetTarget(this, SpellTargets) is null) {
-			_currentylCasting = false;
+			_currentlyCasting = false;
 			_delayedActionHandler.CallAfterSeconds(StartBasicAttackShooting, 0.2f);
 			_delayedActionHandler.CallAfterSeconds(StartManaGain, 0.2f);
 			_currentMana = 0;
@@ -155,7 +169,7 @@ public class TowerBase : UnitBase {
 	}
 
 	private void CastSpell(string _ = "") {
-		_currentylCasting = false;
+		_currentlyCasting = false;
 		_currentMana = 0;
 		_manaBar.UpdateCurrentValue(_currentMana);
 		var target = _unitManager.GetTarget(this, SpellTargets);
@@ -180,9 +194,9 @@ public class TowerBase : UnitBase {
 	/// <param name="manaIncreases">The mana by which the current mana is increased</param>
 	public void IncreaseMana(float manaIncreases) {
 		_currentMana += manaIncreases;
-		if (_currentMana >= MaxMana && !_currentylCasting) {
+		if (MaxMana - _currentMana < float.Epsilon && !_currentlyCasting) {
 			SpellProjectileInfo.SpellNumber = 0;
-			_currentylCasting = true;
+			_currentlyCasting = true;
 			StopGainMana();
 			StopBasicAttackShooting();
 			CheckSpellCast();
@@ -196,11 +210,6 @@ public class TowerBase : UnitBase {
 	/// <param name="shootingType">New trajectory of the projectile</param>
 	public void ChangeShootingType(ShootingType shootingType) {
 		SpellProjectileInfo.ShootingType = shootingType;
-	}
-
-	public override void ResetUnit() {
-		StopGainMana();
-		base.ResetUnit();
 	}
 
 	private void ManaGain(string _ = "") {
@@ -219,6 +228,15 @@ public class TowerBase : UnitBase {
 		ManaGain();
 	}
 
+	private void PassiveRegeneration(string _ = "") {
+		ChangeHealth((int)(HpReg / 2f), this);
+		_delayedActionHandler.CallAfterSeconds(PassiveRegeneration, 0.5f);
+	}
+
+	public void ChangeHeathRegModifier(float value) {
+		_healthRegModifier += value;
+	}
+
 	public void AddOnCastEffect(ScriptableAbilityEffect effect) {
 		OnCastEffect.Add(effect);
 	}
@@ -230,5 +248,11 @@ public class TowerBase : UnitBase {
 	}
 	public void AddOnAfterSpellHitEffect(ScriptableAbilityEffect effect) {
 		SpellProjectileInfo.AddOnAfterHitEffect(effect);
+	}
+	protected override void OnTriggerEnter2D(Collider2D other) {
+		if (other.TryGetComponent<TowerBase>(out var tower)) {
+			_towerInRange.Add(tower);
+		}
+		base.OnTriggerEnter2D(other);
 	}
 }

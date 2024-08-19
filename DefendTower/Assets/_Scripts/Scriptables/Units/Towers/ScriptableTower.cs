@@ -19,4 +19,6 @@ public class ScriptableTower : ScriptableUnit {
     [field: SerializeField] public float CastingSpeed { get; private set; }
     [Tooltip("Prefab if teh spell size changes")]
     [field: SerializeField] public GameObject BigSpellPrefab { get; set; }
+    [Tooltip("The starting regeneration of the tower")]
+    [field: SerializeField] public int HeathRegeneration { get; private set; } = 1;
 }

@@ -16,6 +16,6 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 0
   <Damage>k__BackingField:
     _stat: 6
-    _value: -10
+    _value: -15
   <Delay>k__BackingField: 0.5
-  <TotalTicks>k__BackingField: 10
+  <TotalTicks>k__BackingField: 50

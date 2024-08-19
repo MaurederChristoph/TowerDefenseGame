@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bae19d521084d0ab84cb8ee8ab85431, type: 3}
   m_Name: DamageReduction
   m_EditorClassIdentifier: 
-  <CallType>k__BackingField: 4
+  <CallType>k__BackingField: 14
   <TargetingType>k__BackingField: 0
   <ReductionAmount>k__BackingField:
     _stat: 6
-    _value: 2
+    _value: 15

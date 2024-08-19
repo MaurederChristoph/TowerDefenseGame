@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _ExecuteDamage
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Critical Crush
-  <Description>k__BackingField: "The tower\u2019s attacks deal 2x damage to enemies
-    below 30% health."
+  <Name>k__BackingField: Final Strike
+  <Description>k__BackingField: Execute the target if they are below 15% health.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 7587d0cc1062de44e9792b80a8f36ff5, type: 2}

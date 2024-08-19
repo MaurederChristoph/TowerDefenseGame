@@ -16,4 +16,4 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 1
   <AttackSpeedChange>k__BackingField:
     _stat: 6
-    _value: 0.15
+    _value: 0.1

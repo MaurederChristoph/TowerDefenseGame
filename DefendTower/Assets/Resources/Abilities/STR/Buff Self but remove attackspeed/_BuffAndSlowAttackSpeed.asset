@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _BuffAndSlowAttackSpeed
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Berserker's Gambit
-  <Description>k__BackingField: After each kill, the tower gains a surge of power
-    for 5 seconds, and appling BUFF. But at the cost of a permanent attack speed
-    reduction of 0.4
+  <Name>k__BackingField: Heroic Resilience
+  <Description>k__BackingField: Gain +2 to your highest stat for 2 second after an
+    enemy dies within ythe towers range.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 8f9b465f00c2a09439eddb7e98a02317, type: 2}
   - {fileID: 11400000, guid: ca213c41de35ef545807af2ccaee315e, type: 2}

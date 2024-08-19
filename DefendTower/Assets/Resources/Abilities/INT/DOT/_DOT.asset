@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: _DOT
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Cerebral Decay
-  <Description>k__BackingField: "The tower\u2019s spell applies a damage-over-time
-    effect to targets"
+  <Description>k__BackingField: On spell hit, deal 750 damage over 25 seconds (stacking).
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 1db7002b068c43842858e66f2711835a, type: 2}

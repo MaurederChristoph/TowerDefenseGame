@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _DamageReduction
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Name>k__BackingField: Silver Tongue
+  <Description>k__BackingField: When a spell hits a target, it deals 15 less damage
+    (stacking).
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: a221c9033ba92e542a9e1733715be828, type: 2}

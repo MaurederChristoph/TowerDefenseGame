@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _AOEPoint
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Cognitive Blast
-  <Description>k__BackingField: "The tower\u2019s spell triggers a large area of
-    effect upon hitting an enemy"
+  <Name>k__BackingField: Arcane Detonation
+  <Description>k__BackingField: The spell explodes in a wide area at the target location.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 4243d62bc948b274183a01a8424e8f21, type: 2}
-  - {fileID: 11400000, guid: cabf97e339c37c44eac5242d8d62cbc5, type: 2}
+  - {fileID: 11400000, guid: 3ff0f8e2f6c8d834faa6554810b21e41, type: 2}
   - {fileID: 11400000, guid: 626ee6ce83c41184680cfc2e4bbb00a0, type: 2}

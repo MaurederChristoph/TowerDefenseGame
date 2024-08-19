@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _DualCast
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Dual Invocation
-  <Description>k__BackingField: "The tower\u2019s spell casts twice in quick succession"
+  <Name>k__BackingField: Dual Focus
+  <Description>k__BackingField: Cast the spell twice in a row without needing to
+    regain mana.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 2c8ecf3ab89b8f6489bf8f4c40115b16, type: 2}

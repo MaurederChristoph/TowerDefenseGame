@@ -16,6 +16,6 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 0
   <HealthChangeMultiplier>k__BackingField:
     _stat: 6
-    _value: 20000
+    _value: 2000000
   <ModifierType>k__BackingField: 0
-  <Percentage>k__BackingField: 10
+  <Percentage>k__BackingField: 15

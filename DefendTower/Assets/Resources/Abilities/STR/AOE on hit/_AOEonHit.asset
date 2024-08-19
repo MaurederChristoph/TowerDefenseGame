@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _AOEonHit
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Thunderwave
-  <Description>k__BackingField: Each basic attack channels raw strength, erupting
-    on impact and sending shockwaves that devastate enemies in a wide area.
+  <Name>k__BackingField: Crushing Impact
+  <Description>k__BackingField: Basic attacks are now AoE, dealing 15 times your
+    Strength to enemies in range.
   <Effects>k__BackingField:
-  - {fileID: 11400000, guid: 0759fa54199a72b41a543fda6af1ba62, type: 2}
+  - {fileID: 11400000, guid: 803ea52d3db272541aa3f99e97c05736, type: 2}

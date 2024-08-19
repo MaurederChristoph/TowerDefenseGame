@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d307709de6184c0a96a6dfe8f317e9de, type: 3}
   m_Name: _DamageReduction
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Chilling Aura
-  <Description>k__BackingField: ' Slows down enemies within range by 50%'
+  <Name>k__BackingField: Fortified Presence
+  <Description>k__BackingField: All targets in range deal 10 less damage.
   <Effects>k__BackingField:
   - {fileID: 11400000, guid: 2f2d3c01f5e33e14796f4b8befbae6d2, type: 2}

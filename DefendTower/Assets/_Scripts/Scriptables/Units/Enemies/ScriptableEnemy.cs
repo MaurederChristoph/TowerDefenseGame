@@ -9,7 +9,7 @@ public class ScriptableEnemy : ScriptableUnit {
     /// The time it takes a unit to complete the track
     /// </summary>
     [Tooltip("The time it takes a unit to complete the track")]
-    [field: SerializeField] public float Speed { get; private set; }
+    [field: SerializeField] public float Speed { get; private set; } = 26;
     
     /// <summary>
     /// What type of enemy this is

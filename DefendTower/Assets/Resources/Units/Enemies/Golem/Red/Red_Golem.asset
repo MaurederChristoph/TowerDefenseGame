@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19833ef813a12245a2e806fee27a2ce, type: 3}
+  m_Name: Red_Golem
+  m_EditorClassIdentifier: 
+  <UnitPrefab>k__BackingField: {fileID: 356677388483809300, guid: f532d0e0db762f847ba76d48552b5cdd, type: 3}
+  <MaxHealth>k__BackingField: 38000
+  <AttackSpeed>k__BackingField: 1
+  <Range>k__BackingField: 3.3
+  <AttackTargets>k__BackingField: 1
+  <AttackTargetingStrategy>k__BackingField: 1
+  <Projectile>k__BackingField: {fileID: 11400000, guid: cfbb8a429b73c504cab1b1eeeb867f97, type: 2}
+  <Faction>k__BackingField: 0
+  <BurstSize>k__BackingField: 1
+  <BurstInBetweenShotsMultiplier>k__BackingField: 1
+  <BurstReloadMultiplier>k__BackingField: 1
+  <Speed>k__BackingField: 25
+  <EnemyType>k__BackingField: 9

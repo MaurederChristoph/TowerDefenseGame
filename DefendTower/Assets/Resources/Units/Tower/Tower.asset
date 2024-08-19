@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Tower
   m_EditorClassIdentifier: 
   <UnitPrefab>k__BackingField: {fileID: 397202644826963205, guid: 2ccfb7ce06a7f9149b2307651d26f417, type: 3}
-  <MaxHealth>k__BackingField: 400
-  <Power>k__BackingField: 2
-  <AttackSpeed>k__BackingField: 0
-  <Range>k__BackingField: 4
+  <MaxHealth>k__BackingField: 1000
+  <AttackSpeed>k__BackingField: 1
+  <Range>k__BackingField: 3.3
   <AttackTargets>k__BackingField: 0
   <AttackTargetingStrategy>k__BackingField: 3
   <Projectile>k__BackingField: {fileID: 11400000, guid: 10118b18380170f4ca69d63b6c57d443, type: 2}
@@ -28,6 +27,7 @@ MonoBehaviour:
   <SpellTargetingStrategy>k__BackingField: 3
   <SpellProjectile>k__BackingField: {fileID: 11400000, guid: 7f2ab4f5c05ed18448425407ced9f7ba, type: 2}
   <MaxMana>k__BackingField: 100
-  <ManaRegeneration>k__BackingField: 10
+  <ManaRegeneration>k__BackingField: 0
   <CastingSpeed>k__BackingField: 1.5
   <BigSpellPrefab>k__BackingField: {fileID: 927370748595267867, guid: 10dc433bd02426843a1aba2f7ba78b59, type: 3}
+  <HeathRegeneration>k__BackingField: 5
