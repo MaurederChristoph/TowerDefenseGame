@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+/// <summary>
+/// Manages all the overarching towers
+/// </summary>
 public class TowerManager : MonoBehaviour {
     [Tooltip("Base tower that will be instantiated")]
     [SerializeField] private ScriptableTower _scriptableTower;
@@ -31,6 +34,10 @@ public class TowerManager : MonoBehaviour {
         tower.InitUnit(_scriptableTower);
         return true;
     }
+    /// <summary>
+    /// Removes a tower form the currently alive towers
+    /// </summary>
+    /// <param name="tower">The tower that will be removed</param>
     public void RemoveTower(TowerBase tower) {
         _towers.Remove(_towers.FirstOrDefault(t => t.Value == tower).Key);
     }

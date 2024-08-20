@@ -12,17 +12,21 @@ public class EffectAmount {
     [SerializeField] private float _value = 1;
 
     /// <summary>
-    /// Calculates the correct numerical value of the <see cref="EffectAmount"/> class
+    /// Calculates the correct numerical int value of the <see cref="EffectAmount"/> class
     /// </summary>
     /// <param name="unit">The unit form where the Stats will be taken for the calculation of the total value</param>
-    /// <returns>Numerical positive value of the <see cref="EffectAmount"/></returns>
+    /// <returns>Numerical value of the <see cref="EffectAmount"/></returns>
     public int GetIntValue(UnitBase unit) {
         if(_stat == StatType.None) {
             return Mathf.RoundToInt(_value);
         }
         return Mathf.RoundToInt(_value * ((TowerBase)unit).Stats.GetStatFromType(_stat).Value);
     }
-
+    /// <summary>
+    /// Calculates the correct numerical float value of the <see cref="EffectAmount"/> class
+    /// </summary>
+    /// <param name="unit">The unit form where the Stats will be taken for the calculation of the total value</param>
+    /// <returns>Numerical value of the <see cref="EffectAmount"/></returns>
     public float GetFloatValue(UnitBase unit) {
         if(_stat == StatType.None) {
             return _value;

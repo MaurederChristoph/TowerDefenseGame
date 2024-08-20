@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// Stores the overarching ability
+/// </summary>
 [CreateAssetMenu(menuName = "Ability", fileName = "_Ability")]
 public class Ability : ScriptableObject {
     [Tooltip("The name of the ability")]

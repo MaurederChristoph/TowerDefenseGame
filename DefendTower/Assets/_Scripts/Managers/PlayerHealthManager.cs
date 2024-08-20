@@ -3,9 +3,21 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handels the player overall health
+/// </summary>
 public class PlayerHealthManager : MonoBehaviour {
+	/// <summary>
+	/// How much lives the player has
+	/// </summary>
 	[SerializeField] private int _health = 3;
+	/// <summary>
+	/// The slider of the health
+	/// </summary>
 	[SerializeField] private Slider _slider;
+	/// <summary>
+	/// The lost screen gameobject
+	/// </summary>
 	[SerializeField] private GameObject _showLostScreen;
 
 	private void Start() {

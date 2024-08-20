@@ -38,6 +38,12 @@ public class TargetingStrategy {
         return OnGetNextTarget?.Invoke(origin, targetList);
     }
 
+    /// <summary>
+    /// Creates a new targeting strategy
+    /// </summary>
+    /// <param name="name">The name of the targeting type</param>
+    /// <param name="type">What type the strategy the new instance will be</param>
+    /// <param name="getNextTarget">The list of valid targets the unit can target</param>
     private TargetingStrategy(string name, TargetingStrategyType type, Func<UnitBase, IEnumerable<UnitBase>, UnitBase> getNextTarget) {
         Name = name;
         Type = type;
@@ -65,6 +71,9 @@ public class TargetingStrategy {
     public readonly static TargetingStrategy UntilTargetDeath =
         new("UntilTargetDeath", TargetingStrategyType.UntilTargetDeath, UntilTargetDeathTargeting);
 
+    /// <summary>
+    /// Target the unit that has taunted this unit
+    /// </summary>
     public readonly static TargetingStrategy Taunt =
         new("Taunt", TargetingStrategyType.Taunt, TauntTargeting);
 
