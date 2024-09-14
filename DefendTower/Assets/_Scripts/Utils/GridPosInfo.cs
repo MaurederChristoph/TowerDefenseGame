@@ -16,8 +16,4 @@ public class GridPosInfo {
         CurrentHoveredTilePos = currentHoveredTilePos;
         CurrentHoveredTile = currentHoveredTile;
     }
-    public GridPosInfo() {
-        CurrentHoveredTilePos = new Vector3(999, 999);
-        CurrentHoveredTile = new Vector3Int(999, 999);
-    }
 }

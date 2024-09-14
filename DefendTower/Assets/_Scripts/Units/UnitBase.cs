@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 /// <summary>
 /// Base class for all units
@@ -31,16 +29,46 @@ public class UnitBase : MonoBehaviour {
 	/// </summary>
 	private Action<UnitBase> _onEnemyLeavesRange;
 
+	/// <summary>
+	/// Triggered when the unit dies
+	/// </summary>
 	private Action<UnitBase> _onDeath;
 
+	/// <summary>
+	/// Triggered when a new target is acquired
+	/// </summary>
 	private Action<UnitBase> _onNewTarget;
 
+	/// <summary>
+	/// Effects applied when an enemy leaves the range
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnEnemyLeaveRangeEffect { get; set; } = new();
+
+	/// <summary>
+	/// Effects applied when an enemy enters the range
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnEnemyEnterRangeEffect { get; set; } = new();
+
+	/// <summary>
+	/// Effects applied when the unit gets hit
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnGettingHitEffect { get; set; } = new();
+
+	/// <summary>
+	/// Effects applied when the unit dies
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnDeathEffect { get; set; } = new();
+
+	/// <summary>
+	/// Effects applied when the tower dies
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnTowerDeathEffect { get; set; } = new();
+
+	/// <summary>
+	/// Effects applied when the enemy dies
+	/// </summary>
 	private List<ScriptableAbilityEffect> OnEnemyDeathEffect { get; set; } = new();
+
 
 	/// <summary>
 	/// Faction the unit belongs to
@@ -210,7 +238,7 @@ public class UnitBase : MonoBehaviour {
 	/// <summary>
 	/// Translates unit properties form scriptable unit object to unit script
 	/// </summary>
-	/// <param name="unit">Scriptable unit</param>
+	/// <param name="unit">Scriptable unit object</param>
 	/// <param name="stats">The starting stats of the unit</param>
 	public virtual void InitUnit(ScriptableUnit unit) {
 		Stats = new Stats();
@@ -300,12 +328,18 @@ public class UnitBase : MonoBehaviour {
 		}
 		_currentShootingKey = _delayedActionHandler.CallAfterSeconds(CheckForShooting, time);
 	}
-	
+
+	/// <summary>
+	/// Interrupts the current shooting coroutine
+	/// </summary>
 	protected void StopBasicAttackShooting() {
 		_isShooting = false;
 		_delayedActionHandler.StopDelayedAction(_currentShootingKey);
 	}
 
+	/// <summary>
+	/// Starts the basic shooting cycle
+	/// </summary>
 	protected void StartBasicAttackShooting(string _ = "") {
 		if (_isShooting) return;
 		_isShooting = true;
@@ -401,11 +435,22 @@ public class UnitBase : MonoBehaviour {
 		AttackTarget = target;
 	}
 
+	/// <summary>
+	/// Distributes the input effects to the corresponding lists
+	/// </summary>
+	/// <param name="projectileEffects">The effects that will be distributed</param>
+	/// <param name="origin">The origin of the effect</param>
 	public void DistributeEffects(List<ScriptableAbilityEffect> projectileEffects, UnitBase origin = null) {
 		foreach(var effect in projectileEffects) {
 			DistributeEffect(effect, origin);
 		}
 	}
+
+	/// <summary>
+	/// Distributes the input effect to the corresponding lists  
+	/// </summary>
+	/// <param name="effect">The effect that will be distributed</param>
+	/// <param name="origin">The origin of the effect</param>
 	public void DistributeEffect(ScriptableAbilityEffect effect, UnitBase origin = null) {
 		switch(effect.CallType) {
 			case EffectCallType.OneTimeApply:
@@ -465,6 +510,10 @@ public class UnitBase : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Sets the max hp of the unit
+	/// </summary>
+	/// <param name="value">New max hp</param>
 	private void UpdateMaxHealth(int value) {
 		var hpChange = (int)ResourceSystem.Instance.GetScriptableStatChanges().Con.Amount * value;
 		MaxHealth += hpChange;
@@ -473,6 +522,7 @@ public class UnitBase : MonoBehaviour {
 	}
 
 	#region Event Handlers
+
 	/// <summary>
 	/// Add method to be notified when the health units health changes
 	/// </summary>
@@ -516,39 +566,89 @@ public class UnitBase : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Removes the given method form the enemy leaves tower range notification
+	/// Removes the given method from the enemy leaves tower range notification.
 	/// </summary>
-	/// <param name="listener">The method that will be removed</param>
+	/// <param name="listener">The method that will be removed.</param>
 	public void RemoveOnEnemyLeaveRangeListener(Action<UnitBase> listener) {
 		_onEnemyLeavesRange -= listener;
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when an enemy leaves the tower's range.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnEnemyLeaveRangeEffect(ScriptableAbilityEffect effect) {
 		OnEnemyLeaveRangeEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when an enemy enters the tower's range.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnEnemyEnterRangeEffect(ScriptableAbilityEffect effect) {
 		OnEnemyEnterRangeEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when the unit is hit.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnGettingHitEffect(ScriptableAbilityEffect effect) {
 		OnGettingHitEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when the unit dies.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnDeathEffect(ScriptableAbilityEffect effect) {
 		OnDeathEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when a tower dies.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnTowerDeathEffect(ScriptableAbilityEffect effect) {
 		OnTowerDeathEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds an effect to be triggered when an enemy dies.
+	/// </summary>
+	/// <param name="effect">The effect that will be added.</param>
 	public void AddOnEnemyDeathEffect(ScriptableAbilityEffect effect) {
 		OnEnemyDeathEffect.Add(effect);
 	}
+
+	/// <summary>
+	/// Adds a listener for the unit's death event.
+	/// </summary>
+	/// <param name="listener">The method that will be called upon death.</param>
 	public void AddOnDeathListener(Action<UnitBase> listener) {
 		_onDeath += listener;
 	}
+
+	/// <summary>
+	/// Removes a listener from the unit's death event.
+	/// </summary>
+	/// <param name="listener">The method that will be removed.</param>
 	public void RemoveOnDeathListener(Action<UnitBase> listener) {
 		_onDeath -= listener;
 	}
+
+	/// <summary>
+	/// Adds a listener for when a new target is acquired.
+	/// </summary>
+	/// <param name="listener">The method that will be called when a new target is acquired.</param>
 	public void AddNewTargetListener(Action<UnitBase> listener) {
 		_onNewTarget += listener;
 	}
+
+	/// <summary>
+	/// Removes a listener from the new target event.
+	/// </summary>
+	/// <param name="listener">The method that will be removed.</param>
 	public void RemoveNewTargetListener(Action<UnitBase> listener) {
 		_onNewTarget -= listener;
 	}
@@ -590,14 +690,15 @@ public class UnitBase : MonoBehaviour {
 		EffectCaster.CastEffect(OnEnemyLeaveRangeEffect, BaseProjectile, this, target);
 	}
 
+	/// <summary>
+	/// Checks if a units within the range of the unit dies
+	/// </summary>
+	/// <param name="unit">The unit that died</param>
 	private void HandleUnitDeath(UnitBase unit) {
 		if (unit is EnemyBase) {
 			EffectCaster.CastEffect(OnEnemyDeathEffect, BaseProjectile, this, unit);
 		} else {
 			EffectCaster.CastEffect(OnTowerDeathEffect, BaseProjectile, this, unit);
 		}
-	}
-	public void RemoveHpCap() {
-		_canOverHeal = true;
 	}
 }
