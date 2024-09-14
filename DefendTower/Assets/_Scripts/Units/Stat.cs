@@ -36,6 +36,9 @@ public class Stat {
 	/// </summary>
 	public List<int> TempStats => _tempStatModifiers.Values.ToList();
 
+	/// <summary>
+	/// The stat type
+	/// </summary>
 	public StatType StatType { get; private set; }
 
 	public void Init() {
