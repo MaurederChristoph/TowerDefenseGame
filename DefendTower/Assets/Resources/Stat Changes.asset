@@ -17,10 +17,10 @@ MonoBehaviour:
     <Amount>k__BackingField: 27
   <Dex>k__BackingField:
     <StatType>k__BackingField: 1
-    <Amount>k__BackingField: 0.17
+    <Amount>k__BackingField: 0.2
   <Con>k__BackingField:
     <StatType>k__BackingField: 2
-    <Amount>k__BackingField: 300
+    <Amount>k__BackingField: 350
   <Int>k__BackingField:
     <StatType>k__BackingField: 3
     <Amount>k__BackingField: 75

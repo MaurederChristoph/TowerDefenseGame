@@ -57,34 +57,34 @@ MonoBehaviour:
     <CombatStrength>k__BackingField: 800
     <MinAmountOfNewUnit>k__BackingField: 3
     <MaxAmountOfNewUnit>k__BackingField: 3
-    <OldUnitRange>k__BackingField: 6
+    <OldUnitRange>k__BackingField: 7
   - <PowerLevel>k__BackingField: 10
     <CombatStrength>k__BackingField: 2000
     <MinAmountOfNewUnit>k__BackingField: 3
     <MaxAmountOfNewUnit>k__BackingField: 4
-    <OldUnitRange>k__BackingField: 6
+    <OldUnitRange>k__BackingField: 7
   - <PowerLevel>k__BackingField: 11
-    <CombatStrength>k__BackingField: 2400
+    <CombatStrength>k__BackingField: 2500
     <MinAmountOfNewUnit>k__BackingField: 2
     <MaxAmountOfNewUnit>k__BackingField: 2
-    <OldUnitRange>k__BackingField: 6
+    <OldUnitRange>k__BackingField: 7
   - <PowerLevel>k__BackingField: 12
-    <CombatStrength>k__BackingField: 3500
+    <CombatStrength>k__BackingField: 5500
     <MinAmountOfNewUnit>k__BackingField: 3
     <MaxAmountOfNewUnit>k__BackingField: 4
-    <OldUnitRange>k__BackingField: 6
+    <OldUnitRange>k__BackingField: 8
   - <PowerLevel>k__BackingField: 13
-    <CombatStrength>k__BackingField: 7000
+    <CombatStrength>k__BackingField: 9000
     <MinAmountOfNewUnit>k__BackingField: 4
     <MaxAmountOfNewUnit>k__BackingField: 5
-    <OldUnitRange>k__BackingField: 5
+    <OldUnitRange>k__BackingField: 8
   - <PowerLevel>k__BackingField: 14
-    <CombatStrength>k__BackingField: 10000
+    <CombatStrength>k__BackingField: 12000
     <MinAmountOfNewUnit>k__BackingField: 2
     <MaxAmountOfNewUnit>k__BackingField: 2
-    <OldUnitRange>k__BackingField: 5
+    <OldUnitRange>k__BackingField: 8
   - <PowerLevel>k__BackingField: 15
-    <CombatStrength>k__BackingField: 25000
+    <CombatStrength>k__BackingField: 20000
     <MinAmountOfNewUnit>k__BackingField: 2
     <MaxAmountOfNewUnit>k__BackingField: 3
-    <OldUnitRange>k__BackingField: 5
+    <OldUnitRange>k__BackingField: 9

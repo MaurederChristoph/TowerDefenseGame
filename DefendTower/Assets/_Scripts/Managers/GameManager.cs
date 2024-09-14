@@ -68,6 +68,7 @@ public class GameManager : Singleton<GameManager> {
 
     private void Start() {
         _timer.AddOnPowerLevelChangeListener(WinConCheck);
+        Screen.SetResolution(1920, 1080, true);
     }
 
     /// <summary>

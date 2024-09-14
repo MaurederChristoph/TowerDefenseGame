@@ -16,5 +16,5 @@ MonoBehaviour:
   <TargetingType>k__BackingField: 0
   <HealthChange>k__BackingField:
     _stat: 6
-    _value: 70
+    _value: 40
   <HealthChangeType>k__BackingField: 0

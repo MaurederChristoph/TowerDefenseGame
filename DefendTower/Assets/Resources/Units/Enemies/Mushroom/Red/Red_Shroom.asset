@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Red_Shroom
   m_EditorClassIdentifier: 
   <UnitPrefab>k__BackingField: {fileID: 356677388483809300, guid: 51fd8f8cf5832804698b09f73561b276, type: 3}
-  <MaxHealth>k__BackingField: 70000
+  <MaxHealth>k__BackingField: 65000
   <AttackSpeed>k__BackingField: 0.5
   <Range>k__BackingField: 3.3
   <AttackTargets>k__BackingField: 1
